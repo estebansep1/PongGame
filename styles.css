@@ -1,0 +1,29 @@
+@import url(https://fonts.googleapis.com/css?family=Permanent+Marker:regular);
+
+#gameContainer{
+    text-align: center;
+}
+
+#gameBoard{
+    border: 3px solid;
+}
+
+#scoreText{
+    font-family : monospace;
+    font-size: 100px;
+}
+
+#restartBtn{
+    font-family: Permanent Marker, cursive;
+    font-size: 22px;
+    width: 100px;
+    height: 50px;
+    border: 4px solid;
+    border-radius: 15px;
+    cursor: pointer;
+    background-color: aquamarine;
+}
+
+#restartBtn:hover {
+    opacity: 0.7;
+}
