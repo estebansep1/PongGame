@@ -33,3 +33,13 @@ let paddle2 ={
     x: gameWidth - 25, 
     y: gameHeight - 100
 };
+
+window.addEventListener("keydown", changeDirection);
+restartBtn.addEventListener("click", restartGame)
+
+gameStart();
+
+function gameStart(){
+    createBall();
+    nextTick();
+}
