@@ -78,7 +78,34 @@ function checkCollision(){
 };
 function changeDirection(event){
     const keyPressed = event.keyCode;
-    console.log(keyPressed);
+    console.log(keyPressed)
+    const paddle1Up = 87;
+    const paddle1Down = 83;
+    const paddle2Up = 38;
+    const paddle2Down = 40;
+
+    switch(keyPressed){
+      case(paddle1Up):
+      if(paddle1.y > 0){
+        paddle1.y -= paddleSpeed;
+      }
+      break;
+
+      case(paddle1Down):
+      if(paddle1.y < gameHeight - paddle1.height){
+        paddle1.y += paddleSpeed;
+      }
+      case(paddle2Up):
+        if(paddle2.y > 0){
+            paddle2.y -= paddleSpeed;
+        }
+        break;
+      case(paddle2Down):
+        if(paddle2.y < gameHeight - paddle2.height){
+            paddle2.y += paddleSpeed;
+        }
+        break;
+    } 
 };
 function updateScore(){};
 function restartGame(){};
