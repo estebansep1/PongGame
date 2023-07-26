@@ -8,8 +8,8 @@ const boardBackground = "#00ff00"
 const paddle1Color = "blue";
 const paddle2Color = "red";
 const paddleBorder = "black";
-const ballColor = "pink"; 
-const ballBorderColor = "white";
+const ballColor = "orange"; 
+const ballBorderColor = "black";
 const ballRadius = 12.5;
 const paddleSpeed = 50;
 let intervalID; 
@@ -59,7 +59,18 @@ function nextTick(){
 function clearBoard(){
     ctx.fillStyle = boardBackground;
     ctx.fillRect(0, 0, gameWidth, gameHeight);
+
+//Vertical line inside canvas goes here
+
+    ctx.strokeStyle = 'black';
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(gameWidth / 2, 0);
+    ctx.lineTo(gameWidth / 2, gameHeight);
+    ctx.stroke();
 };
+
+
 function drawPaddles(){
     ctx.strokeStyle = paddleBorder;
 
@@ -71,41 +82,69 @@ function drawPaddles(){
     ctx.fillRect(paddle2.x, paddle2.y, paddle2.width, paddle2.height);
     ctx.strokeRect(paddle2.x, paddle2.y, paddle2.width, paddle2.height);
 };
-function createBall(){};
-function moveBall(){};
-function drawBall(ballX, ballY){};
-function checkCollision(){
+function createBall(){
+    ballX = gameWidth / 2;
+    ballY = gameHeight / 2;
+    ballXDirection = (Math.random() < 0.5) ? -1 : 1; 
+    ballYDirection = (Math.random() < 0.5) ? -1 : 1; 
 };
-function changeDirection(event){
+
+function moveBall(){
+    ballX += ballXDirection * ballSpeed;
+    ballY += ballYDirection * ballSpeed;
+};
+function drawBall(ballX, ballY){
+    ctx.fillStyle = ballColor;
+    ctx.beginPath();
+    ctx.arc(ballX, ballY, ballRadius, 0, Math.PI * 2);
+    ctx.fill();
+
+    ctx.strokeStyle = ballBorderColor;
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.arc(ballX, ballY, ballRadius, 0, Math.PI * 2);
+    ctx.stroke();
+};
+
+function checkCollision(){
+     if(ballY <= 0 + ballRadius){
+        ballYDirection *= -1;
+     }
+     if(ballY >= gameHeight - ballRadius){
+        ballYDirection *= -1;
+     }
+};
+
+function changeDirection(event) {
     const keyPressed = event.keyCode;
-    console.log(keyPressed)
+    console.log(keyPressed);
     const paddle1Up = 87;
     const paddle1Down = 83;
     const paddle2Up = 38;
     const paddle2Down = 40;
-
-    switch(keyPressed){
-      case(paddle1Up):
-      if(paddle1.y > 0){
-        paddle1.y -= paddleSpeed;
-      }
-      break;
-
-      case(paddle1Down):
-      if(paddle1.y < gameHeight - paddle1.height){
-        paddle1.y += paddleSpeed;
-      }
-      case(paddle2Up):
-        if(paddle2.y > 0){
-            paddle2.y -= paddleSpeed;
+  
+    switch (keyPressed) {
+      case paddle1Up:
+        if (paddle1.y > 0) {
+          paddle1.y -= paddleSpeed;
         }
         break;
-      case(paddle2Down):
-        if(paddle2.y < gameHeight - paddle2.height){
-            paddle2.y += paddleSpeed;
+      case paddle1Down:
+        if (paddle1.y < gameHeight - paddle1.height) {
+          paddle1.y += paddleSpeed;
+        }
+        break; 
+      case paddle2Up:
+        if (paddle2.y > 0) {
+          paddle2.y -= paddleSpeed;
         }
         break;
-    } 
-};
+      case paddle2Down:
+        if (paddle2.y < gameHeight - paddle2.height) {
+          paddle2.y += paddleSpeed;
+        }
+        break;
+    }
+  }
 function updateScore(){};
 function restartGame(){};
