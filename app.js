@@ -113,6 +113,17 @@ function checkCollision(){
      if(ballY >= gameHeight - ballRadius){
         ballYDirection *= -1;
      }
+     if(ballX <= 0){
+        player2Score+=1;
+        updateScore()
+        createBall()
+        return;
+     }
+     if (ballX >= gameWidth){
+        player1Score+=1;
+        updateScore()
+        createBall()
+     }
 };
 
 function changeDirection(event) {
