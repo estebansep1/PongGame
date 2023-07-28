@@ -88,7 +88,7 @@ function createBall(){
     ballY = gameHeight / 2;
     ballXDirection = (Math.random() < 0.5) ? -1 : 1; 
     ballYDirection = (Math.random() < 0.5) ? -1 : 1; 
-    ballSpeed = originalBallSpeed
+    ballSpeed = originalBallSpeed;
 };
 
 function moveBall(){
@@ -117,14 +117,16 @@ function checkCollision(){
      }
      if(ballX <= 0){
         player2Score+=1;
-        updateScore()
-        createBall()
+        updateScore();
+        declareGameWinner();
+        createBall();
         return;
      }
      if (ballX >= gameWidth){
         player1Score+=1;
-        updateScore()
-        createBall()
+        updateScore();
+        declareGameWinner();
+        createBall();
         return;
      }
      if(ballX <= (paddle1.x + paddle1.width + ballRadius)){
@@ -178,6 +180,18 @@ function updateScore(){
   scoreText.textContent = `${player1Score} : ${player2Score}`
 };
 
+function declareGameWinner(){
+  if(player1Score === 5){
+    clearInterval(intervalID);
+    alert('Player 1 wins!')
+    restartGame();
+  }else if(player2Score === 5){
+    clearInterval(intervalID);
+    alert('Player 2 wins!')
+    restartGame();
+  }
+}
+
 function restartGame(){
   player1Score = 0;
   player2Score = 0;
@@ -196,4 +210,5 @@ function restartGame(){
   };
  updateScore()
  createBall()
+ nextTick()
 }
