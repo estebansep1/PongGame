@@ -1,5 +1,12 @@
 @import url(https://fonts.googleapis.com/css?family=Permanent+Marker:regular);
 
+h1 {
+    text-align: center;
+    font-family: Permanent Marker;
+    letter-spacing: 10px;
+    text-transform: capitalize;
+}
+
 #gameContainer{
     text-align: center;
 }
