@@ -12,6 +12,7 @@ const ballColor = "orange";
 const ballBorderColor = "black";
 const ballRadius = 12.5;
 const paddleSpeed = 50;
+const originalBallSpeed = 1;
 let intervalID; 
 let ballSpeed = 1;
 let ballX = gameWidth / 2;
@@ -87,6 +88,7 @@ function createBall(){
     ballY = gameHeight / 2;
     ballXDirection = (Math.random() < 0.5) ? -1 : 1; 
     ballYDirection = (Math.random() < 0.5) ? -1 : 1; 
+    ballSpeed = originalBallSpeed
 };
 
 function moveBall(){
@@ -123,6 +125,21 @@ function checkCollision(){
         player1Score+=1;
         updateScore()
         createBall()
+        return;
+     }
+     if(ballX <= (paddle1.x + paddle1.width + ballRadius)){
+        if(ballY > paddle1.y && ballY < paddle1.y + paddle1.height){
+          ballX = (paddle1.x + paddle1.width) + ballRadius;
+          ballXDirection *= -1;
+          ballSpeed += 1;
+        }
+     }
+     if(ballX >= (paddle2.x - ballRadius)){
+      if(ballY > paddle2.y && ballY < paddle2.y + paddle2.height){
+        ballX = paddle2.x - ballRadius;
+        ballXDirection *= -1;
+        ballSpeed += 1;
+      }
      }
 };
 
@@ -157,5 +174,26 @@ function changeDirection(event) {
         break;
     }
   }
-function updateScore(){};
-function restartGame(){};
+function updateScore(){
+  scoreText.textContent = `${player1Score} : ${player2Score}`
+};
+
+function restartGame(){
+  player1Score = 0;
+  player2Score = 0;
+
+ paddle1 = {
+    width: 25,
+    height: 100,
+    x: 0,
+    y: 0
+};
+ paddle2 ={
+    width: 25,
+    height: 100,
+    x: gameWidth - 25, 
+    y: gameHeight - 100
+  };
+ updateScore()
+ createBall()
+}
