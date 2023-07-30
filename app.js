@@ -208,7 +208,7 @@ function restartGame(){
     x: gameWidth - 25, 
     y: gameHeight - 100
   };
+  ballSpeed = originalBallSpeed;
  updateScore()
  createBall()
- nextTick()
 }
