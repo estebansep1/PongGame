@@ -20,7 +20,7 @@ body {
     text-transform: capitalize;
   }
   
-  /* Styles for the "Play Game" button */
+  /* Style for the "Play Game" button */
   #playGameBtn {
     display: block;
     margin: 30px auto;
@@ -45,4 +45,34 @@ body {
     0 0 100px aquamarine, 0 0 200px aquamarine
   }
   
-  
+  #instructions{
+    text-align: center;
+    margin: 30px auto;
+    max-width: 600px;
+  }
+
+  #instructions h2 {
+    font-size: 30px;
+    font-family: "Permanent Marker", cursive;
+    color: #070808
+  }
+
+  #instructions p{
+    font-size: 18px;;
+  }
+
+  #instructions ul {
+    list-style-type: disc;
+    margin-left: 30px;
+  }
+
+  #instructions li {
+    font-size: 16px;
+    color: #333333;
+    margin: 10px 0;
+  }
+
+  .italicMessage{
+    font-style: italic;
+    padding-top: 50px;
+  }
