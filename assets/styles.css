@@ -1,7 +1,48 @@
-body{
+/* Global styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: lightgray;
+  }
+  
+  /* Styles for the header section */
+  #homePage {
+    text-align: center;
+    margin-top: 100px;
+  }
+  
+  .indexTitle {
+    font-family: "Permanent Marker", cursive;
+    font-size: 100px;
+    color: #070808;
+    letter-spacing: 5px;
+    text-transform: capitalize;
+  }
+  
+  /* Styles for the "Play Game" button */
+  #playGameBtn {
+    display: block;
+    margin: 30px auto;
+    font-family: "Permanent Marker", cursive;
+    font-weight: 900;
+    font-size: 30px;
+    width: 200px;
+    height: 50px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
     background-color: aquamarine;
-}
-
-#homePage{
-    align-items: center;
-}
+    box-shadow: 0 0 5px aquamarine, 0 0 25px aquamarine;
+    color: #000000;
+    transition: opacity 0.3s ease-in-out;
+  }
+  
+  #playGameBtn:hover {
+    opacity: 0.8;
+    box-shadow: 0 0 5px aquamarine, 
+    0 0 25px aquamarine, 0 0 50px aquamarine,
+    0 0 100px aquamarine, 0 0 200px aquamarine
+  }
+  
+  
