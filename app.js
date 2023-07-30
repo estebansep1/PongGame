@@ -185,7 +185,7 @@ function declareGameWinner(){
     clearInterval(intervalID);
     alert('Player 1 wins!')
     restartGame();
-  }else if(player2Score === 5){
+  } else if(player2Score === 5){
     clearInterval(intervalID);
     alert('Player 2 wins!')
     restartGame();
