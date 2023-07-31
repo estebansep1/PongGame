@@ -80,3 +80,22 @@ body {
     font-size: small;
     font-style: italic;
   }
+
+  @keyframes pulsate {
+    0% {
+      transform: scale(1);
+      color: rgb(45, 195, 145);
+    }
+    50% {
+      transform: scale(1.1);
+      color: rgb(45, 201, 149);
+    }
+    100% {
+      transfom: scale(1);
+      color: #070808;
+    }
+  }
+
+  .indexTitle{
+    animation: pulsate 2s infinite;
+  }
