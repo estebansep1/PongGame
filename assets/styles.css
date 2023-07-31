@@ -6,10 +6,10 @@ body {
     background-color: lightgray;
   }
   
-  /* Styles for the header section */
+  /* Style for the header section */
   #homePage {
     text-align: center;
-    margin-top: 100px;
+    margin-top: 30px;
   }
   
   .indexTitle {
@@ -73,6 +73,5 @@ body {
   }
 
   .italicMessage{
-    font-style: italic;
     padding-top: 50px;
   }

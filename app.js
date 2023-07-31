@@ -92,8 +92,8 @@ function createBall(){
 };
 
 function moveBall(){
-    ballX += ballXDirection * ballSpeed;
-    ballY += ballYDirection * ballSpeed;
+    ballX += (ballXDirection * ballSpeed);
+    ballY += (ballYDirection * ballSpeed);
 };
 function drawBall(ballX, ballY){
     ctx.fillStyle = ballColor;
