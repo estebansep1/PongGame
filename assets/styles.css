@@ -75,3 +75,8 @@ body {
   .italicMessage{
     padding-top: 50px;
   }
+
+  .ps {
+    font-size: small;
+    font-style: italic;
+  }

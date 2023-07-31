@@ -45,3 +45,10 @@ h1 {
     0 0 25px aquamarine, 0 0 50px aquamarine,
     0 0 100px aquamarine, 0 0 200px aquamarine
 }
+
+.ps,
+.italicMessage {
+  font-size: small;
+  font-style: italic;
+  font-weight: 100;
+}
