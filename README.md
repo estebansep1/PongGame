@@ -1,11 +1,44 @@
-This is my attempt of making a game of Pong! More details to come as i finish this project.
+# Game of Pong
 
+## Instructions
 
-INSTRUCTIONS: 
 - Player 1 (blue paddle): Use the 'W' key to move the paddle up. Use the 'S' key to move it down.
 - Player 2 (red paddle): Use the up arrow key to move the paddle up. Use the down arrow key to move it down.
 - Score points by making the ball pass the opponent's paddle.
-- The first player to get to 5 points will ultimatly win the game.
+- The first player to get to 5 points will ultimately win the game.
 
+*The ball will speed up each time it hits a paddle! Good luck!* Ball speed resets at the beginning of each round.
 
-*THE BALL WILL SPEED EACH TIME IT HITS A PADDLE. BALL SPEED RESETS BEGINNING OF EACH ROUND.
+---
+
+## Overview
+
+Welcome to the "Game of Pong"! This is a classic Pong game where two players control paddles to hit a ball back and forth, trying to score points by passing the ball past the opponent's paddle.
+
+## How to Play
+
+1. Clone the repository to your local machine using `git clone`.
+2. Open the `index.html` file in your web browser to access the game.
+3. Use the specified controls to move the paddles and play the game.
+4. The game will end when one player reaches 5 points, and the winner will be declared.
+
+## Dependencies and Libraries
+
+This project uses the following technologies and resources:
+
+- HTML, CSS, and JavaScript for the game implementation and user interface.
+- Google Fonts API with the "Permanent Marker" font for the game title.
+- Canvas element for rendering the game board and animations.
+
+## Game Mechanics
+
+- Ball Speed: The ball will speed up each time it hits a paddle, making the game more challenging as it progresses. However, the ball's speed resets at the beginning of each round.
+
+## License
+
+This project is open-source and available under the [MIT License](LICENSE). Feel free to use, modify, and distribute the code as per the terms of the license.
+
+## Credits
+
+- [Link to a Pong tutorial or related resource]
+- [Link to another helpful resource]
