@@ -1,7 +1,7 @@
 # Game of Pong
 
 ## Instructions
-
+- To play the game, you need two players. Each player controls one paddle using the following keys:
 - Player 1 (blue paddle): Use the 'W' key to move the paddle up. Use the 'S' key to move it down.
 - Player 2 (red paddle): Use the up arrow key to move the paddle up. Use the down arrow key to move it down.
 - Score points by making the ball pass the opponent's paddle.
@@ -17,20 +17,10 @@ Welcome to the "Game of Pong"! This is a classic Pong game where two players con
 
 ## How to Play
 
-1. To play the game, you need two players. Each player controls one paddle using the following keys:
-
-   - Player 1:
-     - Move Up: 'W' key
-     - Move Down: 'S' key
-
-   - Player 2:
-     - Move Up: Up Arrow key
-     - Move Down: Down Arrow key
-
-2. Clone the repository to your local machine using `git clone`.
-3. Open the `index.html` file in your web browser to access the game.
-4. Use the specified controls to move the paddles and play the game.
-5. The game will end when one player reaches 5 points, and the winner will be declared.
+1. Clone the repository to your local machine using `git clone`.
+2. Open the `index.html` file in your web browser to access the game.
+3. Use the specified controls to move the paddles and play the game.
+4. The game will end when one player reaches 5 points, and the winner will be declared.
 ## Dependencies and Libraries
 
 This project uses the following technologies and resources:
