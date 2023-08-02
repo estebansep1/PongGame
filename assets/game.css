@@ -4,6 +4,7 @@ body {
     background-color: lightgray;
 }
 
+/* Styling for the main title element (h1) */
 h1 {
     text-align: center;
     font-family: Permanent Marker;
@@ -11,19 +12,25 @@ h1 {
     text-transform: capitalize;
 }
 
+/* Styling for the container of the game */
+
 #gameContainer{
     text-align: center;
 }
 
+/* Styling for the game board (canvas element) */
 #gameBoard{
     border: 3px solid;
 }
 
+
+/* Styling for the score display */
 #scoreText{
     font-family : monospace;
     font-size: 100px;
 }
 
+/* Styling for the "Restart" button */
 #restartBtn{
     font-family: Permanent Marker, cursive;
     font-size: 22px;
@@ -38,7 +45,7 @@ h1 {
     border-color: aquamarine
 }
 
-
+/* Styling for the "Restart" button on hover */
 #restartBtn:hover {
     opacity: 0.7;
     box-shadow: 0 0 5px aquamarine, 
@@ -46,6 +53,7 @@ h1 {
     0 0 100px aquamarine, 0 0 200px aquamarine
 }
 
+/* Styling for the "Restart" button on hover */
 .ps,
 .italicMessage {
   font-size: small;
