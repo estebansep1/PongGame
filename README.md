@@ -27,8 +27,8 @@ Welcome to the "Game of Pong"! This is a classic Pong game where two players con
 This project uses the following technologies and resources:
 
 - HTML, CSS, and JavaScript for the game implementation and user interface.
-- Google Fonts API with the "Permanent Marker" font for the game title.
-- Canvas element for rendering the game board and animations.
+- [Google Fonts API](https://fonts.google.com/): Used for the "Permanent Marker" font used in the game title.
+- [Canvas Element](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API): Utilized to render the game board and animations in the Pong game.
 
 ## Game Mechanics
 
@@ -40,3 +40,6 @@ This project is open-source and available under the [MIT License](LICENSE). Feel
 
 ## Credits
 
+- Bro Code YouTube Channel: Inspired by the Pong tutorial and game development guide provided by Bro Code.
+
+- URL: https://youtu.be/AiFqApeurqI
