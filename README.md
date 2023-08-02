@@ -40,5 +40,3 @@ This project is open-source and available under the [MIT License](LICENSE). Feel
 
 ## Credits
 
-- [Link to a Pong tutorial or related resource]
-- [Link to another helpful resource]
