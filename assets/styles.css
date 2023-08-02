@@ -42,6 +42,7 @@ body {
   /* The "glow" effect for the 'Play Game' button */
   #playGameBtn:hover {
     opacity: 0.8;
+    transform: scale(1.1);
     box-shadow: 0 0 5px aquamarine, 
     0 0 25px aquamarine, 0 0 50px aquamarine,
     0 0 100px aquamarine, 0 0 200px aquamarine

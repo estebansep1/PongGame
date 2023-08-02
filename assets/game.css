@@ -42,12 +42,14 @@ h1 {
     background-color: aquamarine;
     box-shadow: 0 0 5px aquamarine,
     0 0 25px aquamarine;
-    border-color: aquamarine
+    border-color: aquamarine;
+    transition: opacity 0.3s ease-in-out;
 }
 
 /* Styling for the "Restart" button on hover */
 #restartBtn:hover {
     opacity: 0.7;
+    transform: scale(1.1);
     box-shadow: 0 0 5px aquamarine, 
     0 0 25px aquamarine, 0 0 50px aquamarine,
     0 0 100px aquamarine, 0 0 200px aquamarine
