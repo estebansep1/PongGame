@@ -1,7 +1,10 @@
+// Get the game canvas and its 2D rendering context
 const gameBoard = document.querySelector("#gameBoard");
 const ctx = gameBoard.getContext("2d");
+// Get references to the score display and restart button
 const scoreText = document.querySelector("#scoreText");
 const restartBtn = document.querySelector("#restartBtn")
+// Set up game dimensions and colors
 const gameWidth = gameBoard.width;
 const gameHeight = gameBoard.height;
 const boardBackground = "#00ff00"
@@ -13,6 +16,7 @@ const ballBorderColor = "black";
 const ballRadius = 12.5;
 const paddleSpeed = 50;
 const originalBallSpeed = 1;
+// Variables to keep track of game state and scores
 let intervalID; 
 let ballSpeed = 1;
 let ballX = gameWidth / 2;
@@ -22,6 +26,7 @@ let ballYDirection = 0;
 let player1Score = 0;
 let player2Score = 0;
 
+// Define the paddles for Player 1 and Player 2
 let paddle1 = {
     width: 25,
     height: 100,
@@ -36,16 +41,20 @@ let paddle2 ={
     y: gameHeight - 100
 };
 
+// Add event listeners for keydown (changeDirection) and click (restartGame)
 window.addEventListener("keydown", changeDirection);
 restartBtn.addEventListener("click", restartGame)
 
+// Start the game when the page loads
 gameStart();
 
+// Function to start the game
 function gameStart(){
     createBall();
     nextTick();
 }
 
+// Function to update the game state and render the next frame
 function nextTick(){
     intervalID = setTimeout(() => {
         clearBoard();
@@ -57,11 +66,12 @@ function nextTick(){
     }, 10)
 }
 
+// Function to clear the game board and draw a vertical line in the center
 function clearBoard(){
     ctx.fillStyle = boardBackground;
     ctx.fillRect(0, 0, gameWidth, gameHeight);
 
-//Vertical line inside canvas goes here
+// Vertical line inside canvas goes here
 
     ctx.strokeStyle = 'black';
     ctx.lineWidth = 2;
@@ -71,7 +81,7 @@ function clearBoard(){
     ctx.stroke();
 };
 
-
+// Function to draw the paddles on the game board
 function drawPaddles(){
     ctx.strokeStyle = paddleBorder;
 
@@ -83,6 +93,8 @@ function drawPaddles(){
     ctx.fillRect(paddle2.x, paddle2.y, paddle2.width, paddle2.height);
     ctx.strokeRect(paddle2.x, paddle2.y, paddle2.width, paddle2.height);
 };
+
+// Function to create the ball and set its initial position and direction
 function createBall(){
     ballX = gameWidth / 2;
     ballY = gameHeight / 2;
@@ -91,10 +103,13 @@ function createBall(){
     ballSpeed = originalBallSpeed;
 };
 
+// Function to move the ball
 function moveBall(){
     ballX += (ballXDirection * ballSpeed);
     ballY += (ballYDirection * ballSpeed);
 };
+
+// Function to draw the ball at its current position
 function drawBall(ballX, ballY){
     ctx.fillStyle = ballColor;
     ctx.beginPath();
@@ -108,6 +123,7 @@ function drawBall(ballX, ballY){
     ctx.stroke();
 };
 
+// Function to check for collisions with walls and paddles
 function checkCollision(){
      if(ballY <= 0 + ballRadius){
         ballYDirection *= -1;
@@ -145,6 +161,7 @@ function checkCollision(){
      }
 };
 
+// Function to handle key presses and move the paddles
 function changeDirection(event) {
     const keyPressed = event.keyCode;
     console.log(keyPressed);
@@ -176,10 +193,13 @@ function changeDirection(event) {
         break;
     }
   }
+
+  // Function to update the score display
 function updateScore(){
   scoreText.textContent = `${player1Score} : ${player2Score}`
 };
 
+// Function to declare the game winner and restart the game if needed
 function declareGameWinner(){
   if(player1Score === 5){
     clearInterval(intervalID);
@@ -192,6 +212,7 @@ function declareGameWinner(){
   }
 }
 
+// Function to restart the game and reset scores and paddles
 function restartGame(){
   player1Score = 0;
   player2Score = 0;
