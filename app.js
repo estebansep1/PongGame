@@ -45,6 +45,16 @@ let paddle2 ={
 window.addEventListener("keydown", changeDirection);
 restartBtn.addEventListener("click", restartGame)
 
+// Event listeners for the 'Home' button. Directs user back to the index.html
+document.addEventListener("DOMContentLoaded", function () {
+  const homeBtn = document.getElementById("homeBtn");
+
+  homeBtn.addEventListener("click", function () {
+    console.log("Button clicked!")
+    window.location.href = "index.html";
+  });
+});
+
 // Start the game when the page loads
 gameStart();
 

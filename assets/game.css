@@ -55,7 +55,34 @@ h1 {
     0 0 100px aquamarine, 0 0 200px aquamarine
 }
 
-/* Styling for the "Restart" button on hover */
+/* Style for the 'Home' button */
+#homeBtn {
+    font-family: "Permanent Marker", cursive;
+    font-size: 22px;
+    width: 100px;
+    height: 50px;
+    border: 4px solid;
+    border-radius: 15px;
+    cursor: pointer;
+    background-color: aquamarine;
+    box-shadow: 0 0 5px aquamarine,
+    0 0 25px aquamarine;
+    border-color: aquamarine;
+    transition: opacity 0.3s ease-in-out;
+    margin-left: 20px;
+    margin-top: 30px; 
+}
+
+/* Style for the 'Home' button on hover */
+#homeBtn:hover{
+    opacity: 0.7;
+    transform: scale(1.1);
+    box-shadow: 0 0 5px aquamarine,
+    0 0 25px aquamarine, 0 0 50px aquamarine,
+    0 0 100px aquamarine, 0 0 200px aquamarine; 
+}
+
+/* Styling for the 'p.s' message */
 .ps,
 .italicMessage {
   font-size: small;
