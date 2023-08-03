@@ -1,15 +1,22 @@
 @import url(https://fonts.googleapis.com/css?family=Permanent+Marker:regular);
 
 body {
-    background-color: lightgray;
+  background-image: url('/assets/arcade.jpeg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  margin: 0;
+  padding: 0;
 }
 
 /* Styling for the main title element (h1) */
 h1 {
+    color: aquamarine;
     text-align: center;
     font-family: Permanent Marker;
     letter-spacing: 10px;
     text-transform: capitalize;
+    margin-top: 40px;
 }
 
 /* Styling for the container of the game */
@@ -28,6 +35,17 @@ h1 {
 #scoreText{
     font-family : monospace;
     font-size: 100px;
+    color: rgb(226, 72, 188);
+    text-align: center;
+    margin-top: 20px;
+    box-shadow: 0 0 5px rgb(226, 72, 188),
+                0 0 25px rgb(226, 72, 188);
+    border-color: rgb(226, 72, 188);
+    border-width: 10px; /* Set the border width to 2px or adjust as needed */
+    border-style: solid;
+    padding: 5px;
+    width: 25%;
+    margin: 20px auto;
 }
 
 /* Styling for the "Restart" button */
