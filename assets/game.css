@@ -1,12 +1,11 @@
 @import url(https://fonts.googleapis.com/css?family=Permanent+Marker:regular);
 
 body {
-  background-image: url('/assets/arcade.jpeg');
+  background-image: url('/assets/screen.jpeg');
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: center center;
-  margin: 0;
-  padding: 0;
+  background-position: center;
+
 }
 
 /* Styling for the main title element (h1) */
@@ -35,7 +34,7 @@ h1 {
 #scoreText{
     font-family : monospace;
     font-size: 100px;
-    color: rgb(226, 72, 188);
+    color: aquamarine;
     text-align: center;
     margin-top: 20px;
     box-shadow: 0 0 5px rgb(226, 72, 188),
@@ -45,7 +44,7 @@ h1 {
     border-style: solid;
     padding: 5px;
     width: 25%;
-    margin: 20px auto;
+    margin: 30px auto;
 }
 
 /* Styling for the "Restart" button */
@@ -88,7 +87,7 @@ h1 {
     border-color: aquamarine;
     transition: opacity 0.3s ease-in-out;
     margin-left: 25px;
-    margin-top: 30px; 
+    margin-top: 10px; 
 }
 
 /* Style for the 'Home' button on hover */
