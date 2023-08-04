@@ -22,6 +22,11 @@ Welcome to the "Game of Pong"! This is a classic Pong game where two players con
 
 1. Clone the repository to your local machine using `git clone`.
 2. Open the `index.html` file in your web browser to access the game.
+
+OR
+
+[Click here to play now!](https://effulgent-unicorn-5361d2.netlify.app)
+
 3. Use the specified controls to move the paddles and play the game.
 4. The game will end when one player reaches 5 points, and the winner will be declared.
 ## Dependencies and Libraries
