@@ -5,7 +5,6 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-
 }
 
 /* Styling for the main title element (h1) */
@@ -42,6 +41,7 @@ h1 {
     border-color: rgb(226, 72, 188);
     border-width: 10px; /* Set the border width to 2px or adjust as needed */
     border-style: solid;
+    border-radius: 50px;
     padding: 5px;
     width: 25%;
     margin: 30px auto;
