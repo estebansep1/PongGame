@@ -1,6 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Permanent+Marker:regular);
 
 body {
+  background-color: lightgray;
   background-image: url('/assets/screen.jpeg');
   background-size: cover;
   background-repeat: no-repeat;
