@@ -1,0 +1,3 @@
+@function calculate-font-size($base-size, $multiplier) {
+    @return $base-size * $multiplier;
+}

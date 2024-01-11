@@ -1,0 +1,6 @@
+$primary-color: aquamarine;
+$secondary-color: #070808;
+
+@if $primary-color == $secondary-color {
+    @error "Primary and secondary colors should be different!";
+}
