@@ -6,8 +6,8 @@ var ctx = gameBoard.getContext("2d");
 var scoreText = document.querySelector("#scoreText");
 var restartBtn = document.querySelector("#restartBtn");
 // Set up game dimensions and colors
-var gameWidth = gameBoard.width;
-var gameHeight = gameBoard.height;
+var gameWidth = (gameBoard === null || gameBoard === void 0 ? void 0 : gameBoard.width) || 0;
+var gameHeight = (gameBoard === null || gameBoard === void 0 ? void 0 : gameBoard.height) || 0;
 var boardBackground = "#00ff00";
 var paddle1Color = "blue";
 var paddle2Color = "red";

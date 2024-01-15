@@ -1,23 +1,23 @@
 // Get the game canvas and its 2D rendering context
-const gameBoard = document.querySelector("#gameBoard");
-const ctx = gameBoard.getContext("2d");
+const gameBoard: HTMLCanvasElement | null = document.querySelector("#gameBoard");
+const ctx: CanvasRenderingContext2D = gameBoard!.getContext("2d")!;
 // Get references to the score display and restart button
-const scoreText = document.querySelector("#scoreText");
-const restartBtn = document.querySelector("#restartBtn")
+const scoreText: HTMLElement | null = document.querySelector("#scoreText");
+const restartBtn: HTMLElement | null = document.querySelector("#restartBtn");
 // Set up game dimensions and colors
-const gameWidth = gameBoard.width;
-const gameHeight = gameBoard.height;
-const boardBackground = "#00ff00"
-const paddle1Color = "blue";
-const paddle2Color = "red";
-const paddleBorder = "black";
-const ballColor = "orange"; 
-const ballBorderColor = "black";
-const ballRadius = 12.5;
-const paddleSpeed = 50;
-const originalBallSpeed = 1;
+const gameWidth: number = gameBoard?.width || 0;
+const gameHeight: number = gameBoard?.height || 0;
+const boardBackground: string = "#00ff00";
+const paddle1Color: string = "blue";
+const paddle2Color:string = "red";
+const paddleBorder:string = "black";
+const ballColor: string = "orange"; 
+const ballBorderColor:string = "black";
+const ballRadius: number = 12.5;
+const paddleSpeed: number = 50;
+const originalBallSpeed: number = 1;
 // Variables to keep track of game state and scores
-let intervalID; 
+let intervalID: ReturnType<typeof setTimeout>; 
 let ballSpeed = 1;
 let ballX = gameWidth / 2;
 let ballY = gameHeight / 2;
@@ -43,13 +43,13 @@ let paddle2 ={
 
 // Add event listeners for keydown (changeDirection) and click (restartGame)
 window.addEventListener("keydown", changeDirection);
-restartBtn.addEventListener("click", restartGame)
+restartBtn!.addEventListener("click", restartGame)
 
 // Event listeners for the 'Home' button. Directs user back to the index.html
 document.addEventListener("DOMContentLoaded", function () {
   const homeBtn = document.getElementById("homeBtn");
 
-  homeBtn.addEventListener("click", function () {
+  homeBtn!.addEventListener("click", function () {
     console.log("Button clicked!")
     window.location.href = "index.html";
   });
@@ -120,7 +120,7 @@ function moveBall(){
 };
 
 // Function to draw the ball at its current position
-function drawBall(ballX, ballY){
+function drawBall(ballX: number, ballY: number){
     ctx.fillStyle = ballColor;
     ctx.beginPath();
     ctx.arc(ballX, ballY, ballRadius, 0, Math.PI * 2);
@@ -172,7 +172,7 @@ function checkCollision(){
 };
 
 // Function to handle key presses and move the paddles
-function changeDirection(event) {
+function changeDirection(event: KeyboardEvent) {
     const keyPressed = event.keyCode;
     console.log(keyPressed);
     const paddle1Up = 87;
@@ -206,7 +206,7 @@ function changeDirection(event) {
 
   // Function to update the score display
 function updateScore(){
-  scoreText.textContent = `${player1Score} : ${player2Score}`
+  scoreText!.textContent = `${player1Score} : ${player2Score}`
 };
 
 // Function to declare the game winner and restart the game if needed
