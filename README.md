@@ -41,10 +41,6 @@ This project uses the following technologies and resources:
 
 - Ball Speed: The ball will speed up each time it hits a paddle, making the game more challenging as it progresses. However, the ball's speed resets at the beginning of each round.
 
-## License
-
-This project is open-source and available under the [MIT License](LICENSE). Feel free to use, modify, and distribute the code as per the terms of the license.
-
 ## Credits
 
 - Bro Code YouTube Channel: Inspired by the Pong tutorial and game development guide provided by Bro Code.
