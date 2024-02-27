@@ -25,7 +25,7 @@ Welcome to the "Game of Pong"! This is a classic Pong game where two players con
 
 OR
 
-[Click here to play now!](https://effulgent-unicorn-5361d2.netlify.app)
+[Click here to play now!](https://gameofpong.netlify.app)
 
 3. Use the specified controls to move the paddles and play the game.
 4. The game will end when one player reaches 5 points, and the winner will be declared.
