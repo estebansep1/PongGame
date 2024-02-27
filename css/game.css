@@ -1,102 +1,94 @@
 @import url(https://fonts.googleapis.com/css?family=Permanent+Marker:regular);
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
 
 body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
   background-color: lightgray;
-  background-image: url('/assets/screen.jpeg');
+  background-image: url("/assets/screen.jpeg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+  font-family: "Press Start 2P", Permanent Marker;
 }
 
 /* Styling for the main title element (h1) */
 h1 {
-    color: aquamarine;
-    text-align: center;
-    font-family: Permanent Marker;
-    letter-spacing: 10px;
-    text-transform: capitalize;
-    margin-top: 40px;
+  color: aquamarine;
+  text-align: center;
+  font-family: "Press Start 2P", Permanent Marker;
+  letter-spacing: 10px;
+  text-transform: capitalize;
+  margin-top: 40px;
 }
 
-/* Styling for the container of the game */
-
-#gameContainer{
-    text-align: center;
+/* Centering the game container */
+#gameContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%; 
 }
 
-/* Styling for the game board (canvas element) */
-#gameBoard{
-    border: 3px solid;
+/* Styling for the game board */
+#gameBoard {
+  margin: 20px 0;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border: 3px solid;
 }
 
 /* Styling for the score display */
-#scoreText{
-    font-family : monospace;
-    font-size: 100px;
-    color: aquamarine;
-    text-align: center;
-    margin-top: 20px;
-    box-shadow: 0 0 5px rgb(226, 72, 188),
-                0 0 25px rgb(226, 72, 188);
-    border-color: rgb(226, 72, 188);
-    border-width: 10px; /* Set the border width to 2px or adjust as needed */
-    border-style: solid;
-    border-radius: 50px;
-    padding: 5px;
-    width: 25%;
-    margin: 30px auto;
+#scoreText {
+  font-family: "Press Start 2P", cursive;
+  font-size: 3rem;
+  color: #14f7ff;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-shadow: 0 0 10px rgba(20, 247, 255, 0.8),
+    0 0 20px rgba(20, 247, 255, 0.5);
+  border: 5px solid #fc01b9;
+  border-radius: 15px;
+  padding: 10px 20px;
+  width: auto;
+  display: inline-block;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(5px);
+  box-shadow: 0 0 15px rgba(20, 247, 255, 0.5),
+    inset 0 0 10px rgba(252, 1, 185, 0.3);
 }
 
-/* Styling for the "Restart" button */
-#restartBtn{
-    font-family: Permanent Marker, cursive;
-    font-size: 22px;
-    width: 100px;
-    height: 50px;
-    border: 4px solid;
-    border-radius: 15px;
-    cursor: pointer;
-    background-color: aquamarine;
-    box-shadow: 0 0 5px aquamarine,
-    0 0 25px aquamarine;
-    border-color: aquamarine;
-    transition: opacity 0.3s ease-in-out;
-}
-
-/* Styling for the "Restart" button on hover */
-#restartBtn:hover {
-    opacity: 0.7;
-    transform: scale(1.1);
-    box-shadow: 0 0 5px aquamarine, 
-    0 0 25px aquamarine, 0 0 50px aquamarine,
-    0 0 100px aquamarine, 0 0 200px aquamarine
-}
-
-/* Style for the 'Home' button */
+/* Styling for the "Restart" and "Home" buttons */
+#restartBtn,
 #homeBtn {
-    font-family: "Permanent Marker", cursive;
-    font-size: 22px;
-    width: 100px;
-    height: 50px;
-    border: 4px solid;
-    border-radius: 15px;
-    cursor: pointer;
-    background-color: aquamarine;
-    box-shadow: 0 0 5px aquamarine,
-    0 0 25px aquamarine;
-    border-color: aquamarine;
-    transition: opacity 0.3s ease-in-out;
-    margin-left: 25px;
-    margin-top: 10px; 
+  font-family: "Press Start 2P", Permanent Marker;
+  font-size: 22px;
+  width: auto;
+  height: 50px;
+  border: 4px solid;
+  border-radius: 15px;
+  cursor: pointer;
+  background-color: aquamarine;
+  box-shadow: 0 0 5px aquamarine, 0 0 25px aquamarine;
+  border-color: aquamarine;
+  transition: opacity 0.3s ease-in-out;
+  margin: 10px;
 }
 
-/* Style for the 'Home' button on hover */
-#homeBtn:hover{
-    opacity: 0.7;
-    transform: scale(1.1);
-    box-shadow: 0 0 5px aquamarine,
-    0 0 25px aquamarine, 0 0 50px aquamarine,
-    0 0 100px aquamarine, 0 0 200px aquamarine; 
+/* Styling for the "Restart" and "Home" buttons on hover */
+#restartBtn:hover,
+#homeBtn:hover {
+  opacity: 0.7;
+  transform: scale(1.1);
+  box-shadow: 0 0 5px aquamarine, 0 0 25px aquamarine, 0 0 50px aquamarine,
+    0 0 100px aquamarine, 0 0 200px aquamarine;
 }
 
 /* Styling for the 'p.s' message */
@@ -107,20 +99,74 @@ h1 {
   font-weight: 100;
 }
 
-/* Media Queries for Mobile Devices */
+/* Styling for responsive screens */
+
 @media only screen and (max-width: 768px) {
-    h1 {
-        font-size: 36px;
-    }
+  h1 {
+    font-size: 36px;
+  }
 
-    #scoreText {
-        font-size: 64px;
-    }
+  #scoreText {
+    font-size: 2rem;
+  }
 
-    #restartBtn,
-    #homeBtn {
-        font-size: 18px;
-        width: 100px;
-        height: 50px;
-    }
+  #restartBtn,
+  #homeBtn {
+    font-size: 18px;
+    width: 100px;
+    height: 40px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  h1 {
+    font-size: 24px;
+    letter-spacing: 5px;
+  }
+
+  #scoreText {
+    font-size: 2rem;
+    padding: 5px 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  #restartBtn,
+  #homeBtn {
+    font-size: 16px;
+    padding: 10px;
+    margin-top: 5px;
+    width: 80%;
+    box-sizing: border-box;
+  }
+
+  .ps,
+  .italicMessage {
+    font-size: smaller;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  h1 {
+    font-size: 28px;
+    letter-spacing: 8px;
+  }
+
+  #scoreText {
+    font-size: 2.5rem;
+    padding: 8px 16px;
+  }
+
+  #restartBtn,
+  #homeBtn {
+    font-size: 18px;
+    padding: 12px 24px;
+    margin-top: 10px;
+    width: 60%;
+  }
+
+  .ps,
+  .italicMessage {
+    font-size: medium;
+  }
 }
