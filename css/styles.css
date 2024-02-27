@@ -1,172 +1,175 @@
-/* Global styles */
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+
 body {
-    margin: 0;
-    padding: 0;
-    font-family: "Permanent Marker";
-    background-color: lightgray;
-  }
-  
-  /* Style for the header section */
-  #homePage {
-    text-align: center;
-    margin-top: 30px;
-  }
-  
-  /* Style for the title */
-  .indexTitle {
-    font-family: "Permanent Marker", cursive;
-    font-size: 100px;
-    color: #070808;
-    letter-spacing: 5px;
-    text-transform: capitalize;
-  }
-  
-  /* Style for the "Play Game" button */
-  #playGameBtn {
-    display: block;
-    margin: 30px auto;
-    font-family: "Permanent Marker", cursive;
-    font-weight: 900;
-    font-size: 30px;
-    width: 200px;
-    height: 50px;
-    border: none;
-    border-radius: 15px;
-    cursor: pointer;
-    background-color: aquamarine;
-    box-shadow: 0 0 5px aquamarine, 0 0 25px aquamarine;
-    color: #000000;
-    transition: opacity 0.3s ease-in-out;
-  }
-  
-  /* The "glow" effect for the 'Play Game' button */
-  #playGameBtn:hover {
-    opacity: 0.8;
-    transform: scale(1.1);
-    box-shadow: 0 0 5px aquamarine, 
-    0 0 25px aquamarine, 0 0 50px aquamarine,
-    0 0 100px aquamarine, 0 0 200px aquamarine
-  }
-  
-  /* Instructions section */
-  #instructions{
-    text-align: center;
-    margin: 30px auto;
-    max-width: 600px;
-  }
+  margin: 0;
+  padding: 0;
+  font-family: "Press Start 2P", cursive;
+  background-color: #111;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-shadow: 0px 0px 10px #39ff14;
+  overflow: hidden;
+}
 
-  #instructions h2 {
-    font-size: 30px;
-    font-family: "Permanent Marker", cursive;
-    color: #070808;
-    text-align: center;
+/* Style for the header section */
+.indexTitle {
+  font-size: 4rem;
+  color: #14ffc8;
+  text-transform: uppercase;
+  animation: neon 1.5s ease-in-out infinite alternate;
+}
+
+/* Neon flicker effect */
+@keyframes neon {
+  from {
+    text-shadow: 0 0 10px #e414ff, 0 0 20px #e414ff, 0 0 30px #e414ff,
+      0 0 40px #e414ff, 0 0 70px #e414ff, 0 0 80px #e414ff, 0 0 100px #e414ff,
+      0 0 150px #e414ff;
   }
-
-  #instructions p{
-    font-size: 20px;;
-    text-align: center;
-  }
-
-  #instructions ul {
-    list-style-type: disc;
-    margin-left: 30px;
-    text-align: center;
-  }
-
-  #instructions li {
-    font-size: 20px;
-    color: #333333;
-    margin: 10px 0;
-    text-align: center;
-  }
-
-  .italicMessage{
-    padding-top: 30px;
-  }
-
-  .ps {
-    font-size: small;
-    font-style: italic;
-  }
-
-  /* Animation for the title */
-  @keyframes pulsate {
-    0% {
-      transform: scale(1);
-      color: rgb(45, 195, 145);
-    }
-    50% {
-      transform: scale(1.1);
-      color: rgb(45, 201, 149);
-    }
-    100% {
-      transfom: scale(1);
-      color: #070808;
-    }
-  }
-
-  .indexTitle{
-    animation: pulsate 2s infinite;
-  }
-
-/* Added media queries for iphones in portrait mode */
-  @media only screen and (max-width: 428px) and (orientation: portrait) {
-    .indexTitle {
-      font-size: 50px;
-      letter-spacing: 2px;
-    }
-
-  #playGameBtn {
-    font-size: 24px;
-    width: 160px;
-    height: 40px;
-    padding: 5px;
-  }
-
-  #instructions {
-    margin: 20 auto;
-  }
-
-  #instructions h2 {
-    font-size: 28px;
-  }
-
-  #instructions p {
-    font-size: 16px;
-  }
-
-  #instructions ul {
-    margin-left: 20px;
-  }
-
-  #instructions li {
-    font-size: 14px;
-    margin: 10px 0;
-  }
-
-  .italicMessage {
-    padding-top: 15px;
-  }
-
-  .ps {
-    font-size: x-small;
+  to {
+    text-shadow: 0 0 5px #e414ff, 0 0 10px #e414ff, 0 0 15px #e414ff,
+      0 0 20px #e414ff, 0 0 35px #e414ff, 0 0 40px #e414ff, 0 0 50px #e414ff,
+      0 0 75px #e414ff;
   }
 }
 
-/* Media queries fo iphones in landscape mode */
-@media only screen and (max-device-width: 428px) and (orientation: landscape) {
-  body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
+/* Style for the "Play Game" button */
+.pushable {
+  font-family: "Press Start 2P", cursive;
+  position: relative;
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  outline-offset: 4px;
+  transition: filter 250ms;
+}
+.shadow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  background: hsl(0deg 0% 0% / 0.25);
+  will-change: transform;
+  transform: translateY(2px);
+  transition: transform 600ms cubic-bezier(0.3, 0.7, 0.4, 1);
+}
+.edge {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  background: linear-gradient(
+    to left,
+    hsl(340deg 100% 16%) 0%,
+    hsl(340deg 100% 32%) 8%,
+    hsl(340deg 100% 32%) 92%,
+    hsl(340deg 100% 16%) 100%
+  );
+}
+.front {
+  display: block;
+  position: relative;
+  padding: 12px 42px;
+  border-radius: 12px;
+  font-size: 1.25rem;
+  color: white;
+  background: hsl(299, 94%, 31%);
+  will-change: transform;
+  transform: translateY(-4px);
+  transition: transform 600ms cubic-bezier(0.3, 0.7, 0.4, 1);
+}
+.pushable:hover {
+  filter: brightness(110%);
+}
+.pushable:hover .front {
+  transform: translateY(-6px);
+  transition: transform 250ms cubic-bezier(0.3, 0.7, 0.4, 1.5);
+}
+.pushable:active .front {
+  transform: translateY(-2px);
+  transition: transform 34ms;
+}
+.pushable:hover .shadow {
+  transform: translateY(4px);
+  transition: transform 250ms cubic-bezier(0.3, 0.7, 0.4, 1.5);
+}
+.pushable:active .shadow {
+  transform: translateY(1px);
+  transition: transform 34ms;
+}
+.pushable:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Instructions section */
+#instructions {
+  max-width: 800px;
+  text-align: center;
+}
+
+#instructions h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+#instructions p,
+#instructions li {
+  font-size: 1rem;
+}
+
+#instructions ul {
+  list-style-type: none; /* Remove bullets */
+  padding: 0;
+}
+
+#instructions li {
+  margin: 2rem 0;
+}
+
+.italicMessage {
+  font-style: italic;
+  margin-top: 1rem;
+}
+
+.ps {
+  margin-top: 80px;
+  font-size: 0.8rem;
+  font-style: italic;
+  opacity: 0.7;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  #indexTitle {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  #indexTitle {
+    font-size: 2rem;
   }
 
   #playGameBtn {
-    font-size: 18px;
-    width: 140px;
-    height: 35px;
-    padding: 3px;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+  }
+
+  #instructions h2 {
+    font-size: 1.5rem;
+  }
+
+  #instructions p,
+  #instructions li {
+    font-size: 0.8rem;
   }
 }
