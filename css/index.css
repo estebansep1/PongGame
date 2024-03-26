@@ -127,7 +127,7 @@ body {
 }
 
 #instructions ul {
-  list-style-type: none; 
+  list-style-type: none;
   padding: 0;
 }
 
@@ -155,7 +155,7 @@ body {
 
   .front {
     padding: 1em 3em;
-    font-size: calc(0.9rem + 2vw); 
+    font-size: calc(0.9rem + 2vw);
   }
 }
 
@@ -169,12 +169,9 @@ body {
     font-size: calc(0.8rem + 3vw);
   }
 }
- 
-/* iPads (Portrait and Landscape) */
-@media only screen 
-  and (min-device-width: 768px) 
-  and (max-device-width: 1024px) {
 
+/* iPads (Portrait and Landscape) */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
   .indexTitle {
     font-size: 3rem;
   }
@@ -185,7 +182,7 @@ body {
   }
 
   #instructions h2 {
-    font-size: 1.75rem; 
+    font-size: 1.75rem;
   }
 
   #instructions p,
@@ -194,38 +191,33 @@ body {
   }
 
   .ps {
-    font-size: 0.75rem; 
+    font-size: 0.75rem;
   }
 }
 
-@media only screen 
-  and (min-device-width: 768px) 
-  and (max-device-width: 1024px) 
-  and (orientation: landscape) {
-
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
   .indexTitle {
-    font-size: 3.5rem; 
+    font-size: 3.5rem;
   }
 }
 
 @media only screen and (max-width: 480px) {
-
   .indexTitle {
-    font-size: 2rem; 
+    font-size: 2rem;
   }
 
   .pushable .front {
-    padding: 8px 28px; 
-    font-size: 0.875rem; 
+    padding: 8px 28px;
+    font-size: 0.875rem;
   }
 
   #instructions h2 {
-    font-size: 1.5rem; 
+    font-size: 1.5rem;
   }
 
   #instructions p,
   #instructions li {
-    font-size: 0.8rem; 
+    font-size: 0.8rem;
   }
 
   .ps {
@@ -234,15 +226,12 @@ body {
 }
 
 @media only screen and (max-width: 767px) and (orientation: landscape) {
-
   .indexTitle {
     font-size: 2.5rem;
   }
 }
 
-
 @media (max-width: 375px) {
-
   .indexTitle {
     display: flex;
     justify-content: center;
@@ -258,7 +247,6 @@ body {
 }
 
 @media (max-width: 1024px) {
-
   .indexTitle {
     display: flex;
     justify-content: center;
