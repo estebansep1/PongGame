@@ -1,10 +1,17 @@
-// Get the 'Play Game' button element with the id 'playGameBtn'
+// Get the '2 Players' and 'Play CPU' buttons element with their ids
 document.addEventListener("DOMContentLoaded", function () {
-    const playGameBtn = document.getElementById("playGameBtn");
+    const twoPlayersBtn = document.getElementById("twoPlayersBtn");
+    const playCpuBtn = document.getElementById("playCpuBtn");
     
   /*  This will navigate the user to the game.html page where the actual game is played */
-    playGameBtn.addEventListener("click", function () {
+    twoPlayersBtn.addEventListener("click", function () {
+      localStorage.getItem('gamemode', '2P')
       window.location.href = "game.html";
     });
   });
+  
+    playCpuBtn.addEventListener("click", function () {
+      localStorage.getItem('gamemode', 'CPU')
+      window.location.href = "game.html";
+    });
   
