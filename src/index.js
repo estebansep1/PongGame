@@ -5,13 +5,13 @@ document.addEventListener("DOMContentLoaded", function () {
     
   /*  This will navigate the user to the game.html page where the actual game is played */
     twoPlayersBtn.addEventListener("click", function () {
-      localStorage.getItem('gamemode', '2P')
+      localStorage.getItem('gameMode', '2P')
       window.location.href = "game.html";
     });
   });
   
     playCpuBtn.addEventListener("click", function () {
-      localStorage.getItem('gamemode', 'CPU')
+      localStorage.getItem('gameMode', 'CPU')
       window.location.href = "game.html";
     });
   
