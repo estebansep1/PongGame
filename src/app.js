@@ -25,6 +25,7 @@ let ballXDirection = 0;
 let ballYDirection = 0;
 let player1Score = 0;
 let player2Score = 0;
+let gameMode = localStorage.getItem("gameMode") || "2P"; // Default to 2 Player mode
 
 // Define the paddles for Player 1 and Player 2
 let paddle1 = {
@@ -68,7 +69,10 @@ function gameStart() {
 function nextTick() {
   intervalID = setTimeout(() => {
     clearBoard();
-    moveCpuPaddle();
+
+    if (gameMode === "CPU") {
+        moveCpuPaddle();
+    }
     drawPaddles();
     moveBall();
     drawBall(ballX, ballY);
@@ -201,34 +205,26 @@ function checkCollision() {
 
 // Function to handle key presses and move the paddles
 function changeDirection(event) {
-  const keyPressed = event.keyCode;
-  console.log(keyPressed);
-  const paddle1Up = 87;
-  const paddle1Down = 83;
-  const paddle2Up = 38;
-  const paddle2Down = 40;
+  const key = event.key; // Using event.key for better readability and future-proofing
+  const paddle1Up = 'w';
+  const paddle1Down = 's';
+  const paddle2Up = 'ArrowUp';
+  const paddle2Down = 'ArrowDown';
 
-  switch (keyPressed) {
-    case paddle1Up:
-      if (paddle1.y > 0) {
-        paddle1.y -= paddleSpeed;
-      }
-      break;
-    case paddle1Down:
-      if (paddle1.y < gameHeight - paddle1.height) {
-        paddle1.y += paddleSpeed;
-      }
-      break;
-    case paddle2Up:
-      if (paddle2.y > 0) {
-        paddle2.y -= paddleSpeed;
-      }
-      break;
-    case paddle2Down:
-      if (paddle2.y < gameHeight - paddle2.height) {
-        paddle2.y += paddleSpeed;
-      }
-      break;
+  // Control for Paddle 1
+  if (key === paddle1Up && paddle1.y > 0) {
+    paddle1.y -= paddleSpeed;
+  } else if (key === paddle1Down && paddle1.y < gameHeight - paddle1.height) {
+    paddle1.y += paddleSpeed;
+  }
+
+  // Control for Paddle 2, only if gameMode is "2P"
+  if (gameMode === "2P") {
+    if (key === paddle2Up && paddle2.y > 0) {
+      paddle2.y -= paddleSpeed;
+    } else if (key === paddle2Down && paddle2.y < gameHeight - paddle2.height) {
+      paddle2.y += paddleSpeed;
+    }
   }
 }
 
