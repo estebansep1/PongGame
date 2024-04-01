@@ -285,19 +285,19 @@ body {
 /* Handling landscape orientation on mobile devices */
 @media only screen and (max-height: 480px) and (orientation: landscape) {
   html, body {
-    padding-top: 5vw; /* Use viewport width for top padding */
-    padding-bottom: 5vw; /* Use viewport width for bottom padding */
+    padding-top: 5vw;
+    padding-bottom: 5vw;
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Center content vertically */
-    height: auto; /* Ensure the body takes the height it needs */
-    overflow-y: visible; /* Ensure nothing is hidden vertically */
+    justify-content: center; 
+    height: auto; 
+    overflow-y: visible; 
   }
 
   .indexTitle, #instructions h2 {
-    font-size: 1rem; /* Smaller font size based on viewport height */
-    margin-top: 0; /* Remove any top margin that could push content down */
-    margin-bottom: 1vh; /* Minimal margin to keep text from being too cramped */
+    font-size: 1rem; 
+    margin-top: 0; 
+    margin-bottom: 1vh;
   }
 
   .indexTitle {
@@ -305,13 +305,13 @@ body {
   }
 
   #instructions p, #instructions li {
-    font-size: 0.5rem; /* Smaller font sizes for text */
-    line-height: 1.2; /* Tight line height to save vertical space */
+    font-size: 0.5rem;
+    line-height: 1.2;
   }
 
   .button-container {
-    flex-direction: row; /* Stack buttons to save space */
-    gap: 2vh; /* Use viewport height for consistent spacing */
+    flex-direction: row;
+    gap: 2vh;
   }
 }
 
