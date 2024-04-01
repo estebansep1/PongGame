@@ -62,6 +62,7 @@ gameStart();
 // Function to start the game
 function gameStart() {
   createBall();
+  setupTouchControls();
   nextTick();
 }
 
@@ -266,4 +267,36 @@ function restartGame() {
   ballSpeed = originalBallSpeed;
   updateScore();
   createBall();
+}
+
+// Setting up functionality for mobile paddle scrolling
+function setupTouchControls() {
+  gameBoard.addEventListener('touchmove', function(e) {
+    e.preventDefault();
+
+    let touchX = e.touches[0].clientX;
+    let touchY = e.touches[0].clientY;
+
+    const rect = gameBoard.getBoundingClientRect();
+    const scale = gameHeight / rect.height;
+    let canvasTouchY = (touchY - rect.top) * scale;
+    let canvasTouchX = (touchX - rect.left) * (gameWidth / rect.width);
+
+    if (gameMode === "CPU") {
+      movePaddle(paddle1, canvasTouchY);
+    } else if (gameMode === "2P") {
+      if (canvasTouchX < gameWidth / 2) {
+        movePaddle(paddle1, canvasTouchY);
+      } else {
+        movePaddle(paddle2, canvasTouchY);
+      }
+    }
+  }, { passive: false });
+}
+
+function movePaddle(paddle, touchY) {
+  paddle.y = touchY - paddle.height / 2;
+
+  // Prevent the paddle from moving out of bounds
+  paddle.y = Math.max(Math.min(paddle.y, gameHeight - paddle.height), 0);
 }
