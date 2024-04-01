@@ -263,12 +263,11 @@ body {
   }
 }
 
-/* Add to your index.css */
 .button-container {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: 15px; /* Adjust the space between buttons */
-  margin-top: 20px; /* Space above the buttons */
+  gap: 15px; 
+  margin-top: 20px;
 }
