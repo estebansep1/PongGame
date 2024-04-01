@@ -1,5 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
 
+html {
+  height: 100%;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -13,7 +17,8 @@ body {
   height: 100vh;
   text-shadow: 0px 0px 10px #39ff14;
   overflow: hidden;
-  gap: 10px 10px 15px
+  gap: 10px 10px 15px;
+  overflow-y: auto; 
 }
 
 /* Style for the header section */
@@ -275,3 +280,4 @@ body {
   gap: 15px; 
   margin-top: 20px;
 }
+
