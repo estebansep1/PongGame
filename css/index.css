@@ -158,6 +158,10 @@ body {
     padding: 1em 3em;
     font-size: calc(0.9rem + 2vw);
   }
+
+  #instructions {
+    padding: 1rem 2rem
+  }
 }
 
 @media (max-width: 480px) {
