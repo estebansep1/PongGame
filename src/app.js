@@ -171,6 +171,7 @@ function drawBall(ballX, ballY) {
 
 // Function to play racket sound
 function playRacketSound() {
+  racketSound.currentTime = 0;
   racketSound.play();
 }
 
