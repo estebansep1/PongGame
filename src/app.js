@@ -72,7 +72,7 @@ function nextTick() {
     clearBoard();
 
     if (gameMode === "CPU") {
-        moveCpuPaddle();
+      moveCpuPaddle();
     }
     drawPaddles();
     moveBall();
@@ -207,10 +207,10 @@ function checkCollision() {
 // Function to handle key presses and move the paddles
 function changeDirection(event) {
   const key = event.key; // Using event.key for better readability and future-proofing
-  const paddle1Up = 'w';
-  const paddle1Down = 's';
-  const paddle2Up = 'ArrowUp';
-  const paddle2Down = 'ArrowDown';
+  const paddle1Up = "w";
+  const paddle1Down = "s";
+  const paddle2Up = "ArrowUp";
+  const paddle2Down = "ArrowDown";
 
   // Control for Paddle 1
   if (key === paddle1Up && paddle1.y > 0) {
@@ -274,29 +274,50 @@ function setupTouchControls() {
   gameBoard.addEventListener('touchmove', function(e) {
     e.preventDefault();
 
-    let touchX = e.touches[0].clientX;
-    let touchY = e.touches[0].clientY;
-
+    // Touch points and the canvas bounding rectangle
+    const touches = e.touches;
     const rect = gameBoard.getBoundingClientRect();
-    const scale = gameHeight / rect.height;
-    let canvasTouchY = (touchY - rect.top) * scale;
-    let canvasTouchX = (touchX - rect.left) * (gameWidth / rect.width);
+    const scaleY = gameHeight / rect.height;
+    const scaleX = gameWidth / rect.width;
 
+    // Logic for CPU mode - move only the left paddle
     if (gameMode === "CPU") {
+      let touchY = touches[0].clientY;
+      let canvasTouchY = (touchY - rect.top) * scaleY;
+      if (canvasTouchY < 0) canvasTouchY = 0;
+      if (canvasTouchY > gameHeight - paddle1.height) canvasTouchY = gameHeight - paddle1.height;
       movePaddle(paddle1, canvasTouchY);
-    } else if (gameMode === "2P") {
-      if (canvasTouchX < gameWidth / 2) {
-        movePaddle(paddle1, canvasTouchY);
-      } else {
-        movePaddle(paddle2, canvasTouchY);
+    }
+
+    // Logic for 2P mode - handle touches on both sides of the screen
+    if (gameMode === "2P") {
+      for (let i = 0; i < touches.length; i++) {
+        let touch = touches[i];
+        let touchX = touch.clientX;
+        let touchY = touch.clientY;
+        let canvasTouchY = (touchY - rect.top) * scaleY;
+        let canvasTouchX = (touchX - rect.left) * scaleX;
+
+        if (canvasTouchY < 0) canvasTouchY = 0;
+        if (canvasTouchY > gameHeight - paddle1.height) canvasTouchY = gameHeight - paddle1.height;
+
+        if (canvasTouchX < gameWidth / 2) {
+          movePaddle(paddle1, canvasTouchY);
+        } else {
+          movePaddle(paddle2, canvasTouchY);
+        }
       }
     }
   }, { passive: false });
 }
 
 function movePaddle(paddle, touchY) {
-  paddle.y = touchY - paddle.height / 2;
+  // New position is touch position minus half paddle height
+  let newY = touchY - (paddle.height / 2);
 
-  // Prevent the paddle from moving out of bounds
-  paddle.y = Math.max(Math.min(paddle.y, gameHeight - paddle.height), 0);
+  // Prevent the paddle from moving out of canvas bounds
+  newY = Math.max(newY, 0);
+  newY = Math.min(newY, gameHeight - paddle.height); 
+
+  paddle.y = newY;
 }
