@@ -67,6 +67,13 @@ h1 {
 }
 
 /* Styling for the "Restart" and "Home" buttons */
+.btn-container {
+  display: flex;
+  flex-direction: column; /* Stack them by default */
+  gap: 10px; /* Adjust the space between the buttons */
+  align-items: center; /* Center align the buttons for aesthetics */
+}
+
 .btn {
   color: white;
   background-color: #9c27b0;
@@ -77,12 +84,17 @@ h1 {
   padding: 15px 30px;
   box-shadow: 0 2px #61616155;
   transition: all 0.3s ease;
-  margin: 0 auto;
+  margin: 0;
   font-family: "Press Start 2P", cursive;
   font-size: 1em;
   cursor: pointer;
   opacity: 1;
   animation: fadeIn 0.1s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 15px 30px; 
 }
 
 .btn:hover,
@@ -93,7 +105,7 @@ h1 {
 }
 
 .btn:active {
-  background-color: #7b1fa2b9
+  background-color: #7b1fa2b9;
 }
 
 .btn:disabled {
@@ -188,5 +200,19 @@ h1 {
   .ps,
   .italicMessage {
     font-size: medium;
+  }
+}
+
+@media (min-width: 600px) {
+  .btn-container {
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .btn {
+    flex: 1;
+    min-width: 150px;
+    text-align: center;
   }
 }
