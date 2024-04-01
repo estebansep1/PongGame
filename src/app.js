@@ -27,6 +27,9 @@ let player1Score = 0;
 let player2Score = 0;
 let gameMode = localStorage.getItem("gameMode") || "2P"; // Default to 2 Player mode
 
+//Load sounds
+const racketSound = new Audio("../../assets/sounds/racketSound.mp3");
+
 // Define the paddles for Player 1 and Player 2
 let paddle1 = {
   width: 25,
@@ -166,6 +169,11 @@ function drawBall(ballX, ballY) {
   ctx.stroke();
 }
 
+// Function to play racket sound
+function playRacketSound() {
+  racketSound.play();
+}
+
 // Function to check for collisions with walls and paddles
 function checkCollision() {
   if (ballY <= 0 + ballRadius) {
@@ -193,6 +201,7 @@ function checkCollision() {
       ballX = paddle1.x + paddle1.width + ballRadius;
       ballXDirection *= -1;
       ballSpeed += 1;
+      playRacketSound();
     }
   }
   if (ballX >= paddle2.x - ballRadius) {
@@ -200,6 +209,7 @@ function checkCollision() {
       ballX = paddle2.x - ballRadius;
       ballXDirection *= -1;
       ballSpeed += 1;
+      playRacketSound();
     }
   }
 }
@@ -271,53 +281,59 @@ function restartGame() {
 
 // Setting up functionality for mobile paddle scrolling
 function setupTouchControls() {
-  gameBoard.addEventListener('touchmove', function(e) {
-    e.preventDefault();
+  gameBoard.addEventListener(
+    "touchmove",
+    function (e) {
+      e.preventDefault();
 
-    // Touch points and the canvas bounding rectangle
-    const touches = e.touches;
-    const rect = gameBoard.getBoundingClientRect();
-    const scaleY = gameHeight / rect.height;
-    const scaleX = gameWidth / rect.width;
+      // Touch points and the canvas bounding rectangle
+      const touches = e.touches;
+      const rect = gameBoard.getBoundingClientRect();
+      const scaleY = gameHeight / rect.height;
+      const scaleX = gameWidth / rect.width;
 
-    // Logic for CPU mode - move only the left paddle
-    if (gameMode === "CPU") {
-      let touchY = touches[0].clientY;
-      let canvasTouchY = (touchY - rect.top) * scaleY;
-      if (canvasTouchY < 0) canvasTouchY = 0;
-      if (canvasTouchY > gameHeight - paddle1.height) canvasTouchY = gameHeight - paddle1.height;
-      movePaddle(paddle1, canvasTouchY);
-    }
-
-    // Logic for 2P mode - handle touches on both sides of the screen
-    if (gameMode === "2P") {
-      for (let i = 0; i < touches.length; i++) {
-        let touch = touches[i];
-        let touchX = touch.clientX;
-        let touchY = touch.clientY;
+      // Logic for CPU mode - move only the left paddle
+      if (gameMode === "CPU") {
+        let touchY = touches[0].clientY;
         let canvasTouchY = (touchY - rect.top) * scaleY;
-        let canvasTouchX = (touchX - rect.left) * scaleX;
-
         if (canvasTouchY < 0) canvasTouchY = 0;
-        if (canvasTouchY > gameHeight - paddle1.height) canvasTouchY = gameHeight - paddle1.height;
+        if (canvasTouchY > gameHeight - paddle1.height)
+          canvasTouchY = gameHeight - paddle1.height;
+        movePaddle(paddle1, canvasTouchY);
+      }
 
-        if (canvasTouchX < gameWidth / 2) {
-          movePaddle(paddle1, canvasTouchY);
-        } else {
-          movePaddle(paddle2, canvasTouchY);
+      // Logic for 2P mode - handle touches on both sides of the screen
+      if (gameMode === "2P") {
+        for (let i = 0; i < touches.length; i++) {
+          let touch = touches[i];
+          let touchX = touch.clientX;
+          let touchY = touch.clientY;
+          let canvasTouchY = (touchY - rect.top) * scaleY;
+          let canvasTouchX = (touchX - rect.left) * scaleX;
+
+          if (canvasTouchY < 0) canvasTouchY = 0;
+          if (canvasTouchY > gameHeight - paddle1.height)
+            canvasTouchY = gameHeight - paddle1.height;
+
+          if (canvasTouchX < gameWidth / 2) {
+            movePaddle(paddle1, canvasTouchY);
+          } else {
+            movePaddle(paddle2, canvasTouchY);
+          }
         }
       }
-    }
-  }, { passive: false });
+    },
+    { passive: false }
+  );
 }
 
 function movePaddle(paddle, touchY) {
   // New position is touch position minus half paddle height
-  let newY = touchY - (paddle.height / 2);
+  let newY = touchY - paddle.height / 2;
 
   // Prevent the paddle from moving out of canvas bounds
   newY = Math.max(newY, 0);
-  newY = Math.min(newY, gameHeight - paddle.height); 
+  newY = Math.min(newY, gameHeight - paddle.height);
 
   paddle.y = newY;
 }
