@@ -1,31 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Game of Pong</title>
-    <link rel="stylesheet" href="./css/game.css">
-    <link rel="apple-touch-icon" sizes="180x180" href="./assets/favicon-16x16.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
-</head>
-<body>
-    <!-- title of game page -->
-    <div class="h1Container">
-    <h1 class="title">Game of Pong</h1>
-</div>
-    <div class="middle-line"></div>
-    <div id="gameContainer">
-        <canvas id="gameBoard" width="500" height ="400"></canvas>
-        <!-- Scoreboard -->
-        <div id="scoreText">0 : 0</div>
-        <!-- Restart Button -->
-        <button id="restartBtn">Restart</button>
-        <!-- Home Button -->
-        <button id="homeBtn">Home</button>
-    </div>
-    <script src="./src/app.js"></script>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Game of Pong</title>
+        <link rel="stylesheet" href="./css/game.css">
+        <link rel="apple-touch-icon" sizes="180x180"
+            href="./assets/favicon-16x16.png">
+        <link rel="icon" type="image/png" sizes="32x32"
+            href="./assets/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16"
+            href="./assets/favicon-16x16.png">
+        <link rel="manifest" href="/site.webmanifest">
+    </head>
+    <body>
+        <!-- title of game page -->
+        <div class="h1Container">
+            <h1 class="title">Game of Pong</h1>
+        </div>
+        <div class="middle-line"></div>
+        <div id="gameContainer">
+            <canvas id="gameBoard" width="500" height="400"></canvas>
+            <!-- Scoreboard -->
+            <div id="scoreText">0 : 0</div>
+            <!-- Restart Button -->
+            <button id="restartBtn" class="btn">
+                Restart
+            </button>
+            <!-- Home Button -->
+            <button id="homeBtn" class="btn">
+                Home
+            </button>
+        </div>
+        <script src="./src/app.js"></script>
+    </body>
 </html>

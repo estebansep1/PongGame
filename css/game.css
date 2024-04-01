@@ -32,7 +32,8 @@ h1 {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100%; 
+  width: 100%;
+  gap: 10px;
 }
 
 /* Styling for the game board */
@@ -66,29 +67,48 @@ h1 {
 }
 
 /* Styling for the "Restart" and "Home" buttons */
-#restartBtn,
-#homeBtn {
-  font-family: "Press Start 2P", Permanent Marker;
-  font-size: 22px;
-  width: auto;
-  height: 50px;
-  border: 4px solid;
+.btn {
+  color: white;
+  background-color: #9c27b0;
+  border: 3px solid #212121;
   border-radius: 15px;
+  text-decoration: none;
+  text-shadow: 0px 0px 5px rgba(255, 255, 255, 0.8);
+  padding: 15px 30px;
+  box-shadow: 0 2px #61616155;
+  transition: all 0.3s ease;
+  margin: 0 auto;
+  font-family: "Press Start 2P", cursive;
+  font-size: 1em;
   cursor: pointer;
-  background-color: aquamarine;
-  box-shadow: 0 0 5px aquamarine, 0 0 25px aquamarine;
-  border-color: aquamarine;
-  transition: opacity 0.3s ease-in-out;
-  margin: 10px;
+  opacity: 1;
+  animation: fadeIn 0.1s;
 }
 
-/* Styling for the "Restart" and "Home" buttons on hover */
-#restartBtn:hover,
-#homeBtn:hover {
-  opacity: 0.7;
-  transform: scale(1.1);
-  box-shadow: 0 0 5px aquamarine, 0 0 25px aquamarine, 0 0 50px aquamarine,
-    0 0 100px aquamarine, 0 0 200px aquamarine;
+.btn:hover,
+.btn:active {
+  background-color: #7b1fa2;
+  transform: translateY(3px);
+  box-shadow: 0 0 #616161;
+}
+
+.btn:active {
+  background-color: #7b1fa2b9
+}
+
+.btn:disabled {
+  background-color: #616161;
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 /* Styling for the 'p.s' message */
