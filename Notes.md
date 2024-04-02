@@ -5,6 +5,7 @@
 - Fix the 'Restart" and "Home" buttons css in home page (✅) 
 - Clean up overall CSS, mainly: @media queries (✅)
 - Implement options for 2 players or CPU gamemodes (✅)
-- Implement different way to display user without using the alert window
+- Implement different way to display user without using the alert window (✅)
 - Add a "credits" page/or a modal to display credits
-- Add sounds
+- Fix the sound delay on mobile
+- Add sounds(✅)
