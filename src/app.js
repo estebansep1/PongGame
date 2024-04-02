@@ -308,52 +308,48 @@ restartBtn.addEventListener("click", restartGame);
 
 // Setting up functionality for mobile paddle scrolling
 function setupTouchControls() {
-  const dpr = window.devicePixelRatio || 1;
-  gameBoard.addEventListener(
-    "touchmove",
-    function (e) {
-      e.preventDefault();
+  let lastMoveTime = Date.now();
+  const throttleDuration = 10;
 
-      // Touch points and the canvas bounding rectangle
-      const touches = e.touches;
-      const rect = gameBoard.getBoundingClientRect();
-      const scaleY = gameHeight / rect.height;
-      const scaleX = gameWidth / rect.width;
+  gameBoard.addEventListener("touchmove", function (e) {
+    e.preventDefault();
 
-      // Logic for CPU mode - move only the left paddle
-      if (gameMode === "CPU") {
-        let touchY = touches[0].clientY;
-        let canvasTouchY = (touchY - rect.top) * scaleY;
-        if (canvasTouchY < 0) canvasTouchY = 0;
-        if (canvasTouchY > gameHeight - paddle1.height)
-          canvasTouchY = gameHeight - paddle1.height;
-        movePaddle(paddle1, canvasTouchY);
+    const now = Date.now();
+    if (now - lastMoveTime < throttleDuration) {
+      return;
+    }
+    lastMoveTime = now;
+
+    const touches = e.touches;
+    const rect = gameBoard.getBoundingClientRect();
+    const scaleY = gameHeight / rect.height;
+    const scaleX = gameWidth / rect.width;
+
+    for (let i = 0; i < touches.length; i++) {
+      let touch = touches[i];
+      let touchX = touch.clientX;
+      let touchY = touch.clientY;
+      let canvasTouchY = (touchY - rect.top) * scaleY;
+      let canvasTouchX = (touchX - rect.left) * scaleX;
+
+      if (canvasTouchX < gameWidth / 2) {
+        movePaddleSmoothly(paddle1, canvasTouchY);
+      } else {
+        movePaddleSmoothly(paddle2, canvasTouchY);
       }
-
-      // Logic for 2P mode - handle touches on both sides of the screen
-      if (gameMode === "2P") {
-        for (let i = 0; i < touches.length; i++) {
-          let touch = touches[i];
-          let touchX = touch.clientX;
-          let touchY = touch.clientY;
-          let canvasTouchY = ((touchY - rect.top) * scaleY) * dpr;
-          let canvasTouchX = (touchX - rect.left) * scaleX;
-
-          if (canvasTouchY < 0) canvasTouchY = 0;
-          if (canvasTouchY > gameHeight - paddle1.height)
-            canvasTouchY = gameHeight - paddle1.height;
-
-          if (canvasTouchX < gameWidth / 2) {
-            movePaddle(paddle1, canvasTouchY);
-          } else {
-            movePaddle(paddle2, canvasTouchY);
-          }
-        }
-      }
-    },
-    { passive: false }
-  );
+    }
+  }, { passive: false });
 }
+
+function movePaddleSmoothly(paddle, targetY) {
+  const easeAmount = 0.1;
+  const deltaY = (targetY - paddle.y) * easeAmount;
+
+  paddle.y += deltaY;
+  paddle.y = Math.max(paddle.y, 0);
+  paddle.y = Math.min(paddle.y, gameHeight - paddle.height);
+}
+
 
 function movePaddle(paddle, touchY) {
   let newY = touchY;
