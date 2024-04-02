@@ -256,7 +256,7 @@ function declareGameWinner() {
       shouldPlayConfetti = true;
     }
   } else if (gameMode === "CPU") {
-    if (player1Score === 1) {
+    if (player1Score === 5) {
       message = "You WON!";
       sound = cheerSound;
       shouldPlayConfetti = true;
