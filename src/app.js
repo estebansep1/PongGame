@@ -211,7 +211,7 @@ function checkCollision() {
 
 // Function to handle key presses and move the paddles
 function changeDirection(event) {
-  const key = event.key; // Using event.key for better readability and future-proofing
+  const key = event.key;
   const paddle1Up = "w";
   const paddle1Down = "s";
   const paddle2Up = "ArrowUp";
@@ -243,9 +243,8 @@ function updateScore() {
 function declareGameWinner() {
   let message;
   let sound;
-  let shouldPlayConfetti = false; // flag to control confetti
+  let shouldPlayConfetti = false;
 
-  // Check who won and set the appropriate message and sound
   if (gameMode === "2P") {
     if (player1Score === 5) {
       message = "Player 1 Wins!";
@@ -274,17 +273,16 @@ function declareGameWinner() {
     sound.play();
     document.getElementById("win-popup").style.display = "block";
     if (shouldPlayConfetti) {
-      confetti.start(1500); // Start confetti with a duration of 1.5 seconds
+      confetti.start(1500);
     }
-    gameIsRunning = false; // Stop the game loop by setting the flag to false
+    gameIsRunning = false;
   }
 }
 
 // Add event listeners for closing the popup and restarting the game
 document.querySelector(".close").addEventListener("click", function () {
   document.getElementById("win-popup").style.display = "none";
-  confetti.stop(); // Stop the confetti when closing the popup
-  // Consider adding code here to reset the game if that's required
+  confetti.stop();
 });
 
 // Function to restart the game and reset scores and paddles
@@ -310,6 +308,7 @@ restartBtn.addEventListener("click", restartGame);
 
 // Setting up functionality for mobile paddle scrolling
 function setupTouchControls() {
+  const dpr = window.devicePixelRatio || 1;
   gameBoard.addEventListener(
     "touchmove",
     function (e) {
@@ -337,7 +336,7 @@ function setupTouchControls() {
           let touch = touches[i];
           let touchX = touch.clientX;
           let touchY = touch.clientY;
-          let canvasTouchY = (touchY - rect.top) * scaleY;
+          let canvasTouchY = ((touchY - rect.top) * scaleY) * dpr;
           let canvasTouchX = (touchX - rect.left) * scaleX;
 
           if (canvasTouchY < 0) canvasTouchY = 0;
@@ -357,12 +356,14 @@ function setupTouchControls() {
 }
 
 function movePaddle(paddle, touchY) {
-  // New position is touch position minus half paddle height
-  let newY = touchY - paddle.height / 2;
+  let newY = touchY;
 
-  // Prevent the paddle from moving out of canvas bounds
-  newY = Math.max(newY, 0);
-  newY = Math.min(newY, gameHeight - paddle.height);
+  if (newY < 0) {
+    newY = 0;
+  }
+  else if (newY > gameHeight - paddle.height) {
+    newY = gameHeight - paddle.height;
+  }
 
   paddle.y = newY;
 }
