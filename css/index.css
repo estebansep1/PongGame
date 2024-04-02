@@ -132,10 +132,6 @@ body {
   font-size: 1rem;
 }
 
-#instructions, p {
-  line-height: 23px;
-}
-
 #instructions ul {
   list-style-type: none;
   padding: 0;
