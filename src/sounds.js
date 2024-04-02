@@ -15,12 +15,14 @@ function playRacketSound() {
   }
 }
 
+// Function to play cheer sound
 function playCheerSound() {
   if (!isMuted) {
     cheerSound.play().catch((error) => console.error("Error playing sound:", error));
   }
 }
 
+//function to play sad sound
 function playSadSound() {
   if (!isMuted) {
     sadSound.play().catch((error) => console.error("Error playing sound:", error));
@@ -33,40 +35,21 @@ function toggleSound() {
   isMuted = !isMuted;
   document.getElementById("soundToggle").textContent = isMuted ? "🔇" : "🔊";
 
-  // Apply the muted state to all your sound objects
   racketSound.muted = isMuted;
   cheerSound.muted = isMuted;
   sadSound.muted = isMuted;
-  // Continue for any other sounds you have
 
   localStorage.setItem("isMuted", isMuted.toString());
 }
 
 document.addEventListener("DOMContentLoaded", function() {
-  // Retrieve the stored mute state from localStorage and apply it
   const savedMuteState = localStorage.getItem("isMuted");
   if (savedMuteState !== null) {
     isMuted = savedMuteState === "true";
-    // Apply the mute state to all sound objects upon page load
     racketSound.muted = isMuted;
     cheerSound.muted = isMuted;
     sadSound.muted = isMuted;
-    // Continue for any other sounds you have
 
-    // Update the button text based on the mute state
-    document.getElementById("soundToggle").textContent = isMuted ? "🔇" : "🔊";
-  }
-
-  // Attach the event listener to the sound toggle button
-  document.getElementById("soundToggle").addEventListener("click", toggleSound);
-});
-
-
-document.addEventListener("DOMContentLoaded", function () {
-  const savedMuteState = localStorage.getItem("isMuted");
-
-  if (savedMuteState !== null) {
-    isMuted = savedMuteState === "true";
     document.getElementById("soundToggle").textContent = isMuted ? "🔇" : "🔊";
   }
 
