@@ -25,7 +25,8 @@ let ballXDirection = 0;
 let ballYDirection = 0;
 let player1Score = 0;
 let player2Score = 0;
-let gameMode = localStorage.getItem("gameMode") || "2P"; // Default to 2 Player mode
+let gameMode = localStorage.getItem("gameMode") || "2P";
+let gameIsRunning = true;
 
 // Define the paddles for Player 1 and Player 2
 let paddle1 = {
@@ -68,6 +69,8 @@ function gameStart() {
 
 // Function to update the game state and render the next frame
 function nextTick() {
+  if (!gameIsRunning) return;
+
   intervalID = setTimeout(() => {
     clearBoard();
 
@@ -238,38 +241,72 @@ function updateScore() {
 
 // Function to declare the game winner and restart the game if needed
 function declareGameWinner() {
-  if (player1Score === 5) {
-    clearInterval(intervalID);
-    alert("Player 1 wins!");
-    restartGame();
-  } else if (player2Score === 5) {
-    clearInterval(intervalID);
-    alert("Player 2 wins!");
-    restartGame();
+  let message;
+  let sound;
+  let shouldPlayConfetti = false; // flag to control confetti
+
+  // Check who won and set the appropriate message and sound
+  if (gameMode === "2P") {
+    if (player1Score === 5) {
+      message = "Player 1 Wins!";
+      sound = cheerSound;
+      shouldPlayConfetti = true;
+    } else if (player2Score === 5) {
+      message = "Player 2 Wins!";
+      sound = cheerSound;
+      shouldPlayConfetti = true;
+    }
+  } else if (gameMode === "CPU") {
+    if (player1Score === 1) {
+      message = "You Won!";
+      sound = cheerSound;
+      shouldPlayConfetti = true;
+    } else if (player2Score === 1) {
+      message = "You Lost!";
+      sound = sadSound;
+      shouldPlayConfetti = false;
+    }
+  }
+
+  // If a winner has been determined, display the message, play the sound
+  if (message) {
+    document.getElementById("winnerMessage").textContent = message;
+    sound.play();
+    document.getElementById("win-popup").style.display = "block";
+    if (shouldPlayConfetti) {
+      confetti.start(1500); // Start confetti with a duration of 1.5 seconds
+    }
+    gameIsRunning = false; // Stop the game loop by setting the flag to false
   }
 }
+
+// Add event listeners for closing the popup and restarting the game
+document.querySelector(".close").addEventListener("click", function () {
+  document.getElementById("win-popup").style.display = "none";
+  confetti.stop(); // Stop the confetti when closing the popup
+  // Consider adding code here to reset the game if that's required
+});
 
 // Function to restart the game and reset scores and paddles
 function restartGame() {
   player1Score = 0;
   player2Score = 0;
-
-  paddle1 = {
-    width: 25,
-    height: 100,
-    x: 0,
-    y: 0,
-  };
-  paddle2 = {
-    width: 25,
-    height: 100,
-    x: gameWidth - 25,
-    y: gameHeight - 100,
-  };
+  paddle1.y = (gameHeight - paddle1.height) / 2;
+  paddle2.y = (gameHeight - paddle2.height) / 2;
+  ballX = gameWidth / 2;
+  ballY = gameHeight / 2;
+  ballXDirection = Math.random() < 0.5 ? -1 : 1;
+  ballYDirection = Math.random() < 0.5 ? -1 : 1;
   ballSpeed = originalBallSpeed;
   updateScore();
-  createBall();
+  gameIsRunning = true;
+  window.addEventListener("keydown", changeDirection);
+  document.getElementById("win-popup").style.display = "none";
+  nextTick();
 }
+
+// Attach the restart function to the restart button click event
+restartBtn.addEventListener("click", restartGame);
 
 // Setting up functionality for mobile paddle scrolling
 function setupTouchControls() {
