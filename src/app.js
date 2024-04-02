@@ -257,11 +257,11 @@ function declareGameWinner() {
       shouldPlayConfetti = true;
     }
   } else if (gameMode === "CPU") {
-    if (player1Score === 1) {
+    if (player1Score === 5) {
       message = "You Won!";
       sound = cheerSound;
       shouldPlayConfetti = true;
-    } else if (player2Score === 1) {
+    } else if (player2Score === 5) {
       message = "You Lost!";
       sound = sadSound;
       shouldPlayConfetti = false;

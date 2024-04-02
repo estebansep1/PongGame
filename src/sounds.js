@@ -34,9 +34,3 @@ document.addEventListener("DOMContentLoaded", function () {
 
   document.getElementById("soundToggle").addEventListener("click", toggleSound);
 });
-
-function testSound() {
-  sadSound.play().catch((e) => console.error("Playback failed:", e));
-}
-
-document.addEventListener("DOMContentLoaded", testSound);
