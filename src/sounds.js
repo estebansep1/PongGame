@@ -17,8 +17,8 @@ document.getElementById("soundToggle").addEventListener("click", toggleSound);
 function toggleSound() {
   isMuted = !isMuted;
   document.getElementById("soundToggle").textContent = isMuted
-    ? "Unmute"
-    : "Mute";
+    ? "🔇"
+    : "🔊";
 
     localStorage.setItem('isMuted', isMuted.toString());
 }
@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (savedMuteState !== null) {
         isMuted = savedMuteState === 'true';
-        document.getElementById('soundToggle').textContent = isMuted ? "Unmute" : "Mute";
+        document.getElementById('soundToggle').textContent = isMuted ? "🔇" : "🔊";
     }
 
     document.getElementById('soundToggle').addEventListener('click', toggleSound);
