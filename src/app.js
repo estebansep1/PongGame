@@ -27,9 +27,6 @@ let player1Score = 0;
 let player2Score = 0;
 let gameMode = localStorage.getItem("gameMode") || "2P"; // Default to 2 Player mode
 
-//Load sounds
-const racketSound = new Audio("../../assets/sounds/racketSound.mp3");
-
 // Define the paddles for Player 1 and Player 2
 let paddle1 = {
   width: 25,
@@ -167,12 +164,6 @@ function drawBall(ballX, ballY) {
   ctx.beginPath();
   ctx.arc(ballX, ballY, ballRadius, 0, Math.PI * 2);
   ctx.stroke();
-}
-
-// Function to play racket sound
-function playRacketSound() {
-  racketSound.currentTime = 0;
-  racketSound.play();
 }
 
 // Function to check for collisions with walls and paddles
