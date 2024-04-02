@@ -1,6 +1,6 @@
 # Game of Pong
 
-## A web game built entirely with vanilla JavaScript, HTML, and CSS
+## A web game built entirely with vanilla HTML, CSS, and JavaScript
 
 [Click here](https://gameofpong.netlify.app/) for a live version of this game!
 
