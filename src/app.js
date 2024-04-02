@@ -256,12 +256,12 @@ function declareGameWinner() {
       shouldPlayConfetti = true;
     }
   } else if (gameMode === "CPU") {
-    if (player1Score === 5) {
-      message = "You Won!";
+    if (player1Score === 1) {
+      message = "You WON!";
       sound = cheerSound;
       shouldPlayConfetti = true;
     } else if (player2Score === 5) {
-      message = "You Lost!";
+      message = "You LOST!";
       sound = sadSound;
       shouldPlayConfetti = false;
     }
