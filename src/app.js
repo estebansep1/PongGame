@@ -311,38 +311,42 @@ function setupTouchControls() {
   let lastMoveTime = Date.now();
   const throttleDuration = 10;
 
-  gameBoard.addEventListener("touchmove", function (e) {
-    e.preventDefault();
+  gameBoard.addEventListener(
+    "touchmove",
+    function (e) {
+      e.preventDefault();
 
-    const now = Date.now();
-    if (now - lastMoveTime < throttleDuration) {
-      return;
-    }
-    lastMoveTime = now;
-
-    const touches = e.touches;
-    const rect = gameBoard.getBoundingClientRect();
-    const scaleY = gameHeight / rect.height;
-    const scaleX = gameWidth / rect.width;
-
-    for (let i = 0; i < touches.length; i++) {
-      let touch = touches[i];
-      let touchX = touch.clientX;
-      let touchY = touch.clientY;
-      let canvasTouchY = (touchY - rect.top) * scaleY;
-      let canvasTouchX = (touchX - rect.left) * scaleX;
-
-      if (canvasTouchX < gameWidth / 2) {
-        movePaddleSmoothly(paddle1, canvasTouchY);
-      } else {
-        movePaddleSmoothly(paddle2, canvasTouchY);
+      const now = Date.now();
+      if (now - lastMoveTime < throttleDuration) {
+        return;
       }
-    }
-  }, { passive: false });
+      lastMoveTime = now;
+
+      const touches = e.touches;
+      const rect = gameBoard.getBoundingClientRect();
+      const scaleY = gameHeight / rect.height;
+      const scaleX = gameWidth / rect.width;
+
+      for (let i = 0; i < touches.length; i++) {
+        let touch = touches[i];
+        let touchX = touch.clientX;
+        let touchY = touch.clientY;
+        let canvasTouchY = (touchY - rect.top) * scaleY;
+        let canvasTouchX = (touchX - rect.left) * scaleX;
+
+        if (canvasTouchX < gameWidth / 2) {
+          movePaddleSmoothly(paddle1, canvasTouchY);
+        } else {
+          movePaddleSmoothly(paddle2, canvasTouchY);
+        }
+      }
+    },
+    { passive: false }
+  );
 }
 
 function movePaddleSmoothly(paddle, targetY) {
-  const easeAmount = 0.1;
+  const easeAmount = 0.2;
   const deltaY = (targetY - paddle.y) * easeAmount;
 
   paddle.y += deltaY;
@@ -350,14 +354,12 @@ function movePaddleSmoothly(paddle, targetY) {
   paddle.y = Math.min(paddle.y, gameHeight - paddle.height);
 }
 
-
 function movePaddle(paddle, touchY) {
   let newY = touchY;
 
   if (newY < 0) {
     newY = 0;
-  }
-  else if (newY > gameHeight - paddle.height) {
+  } else if (newY > gameHeight - paddle.height) {
     newY = gameHeight - paddle.height;
   }
 
