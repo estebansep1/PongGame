@@ -38,12 +38,154 @@ h1 {
 
 /* Styling for the game board */
 #gameBoard {
-  max-width: 100%; /* Limit the width of the canvas to the width of its container */
-  height: auto; /* Maintain the aspect ratio */
-  display: block; /* Prevent inline spacing issues */
+  max-width: 100%;
+  height: auto;
+  display: block;
   margin: 0 auto;
   border: 3px solid;
+  position: relative;
 }
+
+/* ANIMATION for the win modal */
+@keyframes colorFlash {
+  0% {
+    color: white;
+    background-color: rgb(0, 223, 216);
+  }
+  50% {
+    color: white;
+    background-color: rgb(0, 223, 216);
+  }
+  51% {
+    color: black;
+    background-color: rgb(223, 0, 197);
+  }
+  100% {
+    color: black;
+    background-color: rgb(223, 0, 197);
+  }
+}
+
+@-webkit-keyframes colorFlash {
+  0% {
+    color: white;
+    background-color: rgb(0, 0, 0);
+  }
+  50% {
+    color: white;
+    background-color: rgb(0, 0, 0);
+  }
+  51% {
+    color: black;
+    background-color: rgb(0, 223, 216);
+  }
+  100% {
+    color: black;
+    background-color: rgb(0, 223, 216);
+  }
+}
+
+@keyframes fadeAway {
+  0% {
+    transform: translateY(0px);
+    color: rgb(0, 0, 0);
+  }
+  100% {
+    transform: translateY(-30px);
+    color: rgba(0, 0, 0, 0);
+  }
+}
+
+@-webkit-keyframes fadeAway {
+  0% {
+    transform: translateY(0px);
+    color: rgb(0, 192, 160);
+  }
+  100% {
+    transform: translateY(-30px);
+    color: rgba(0, 221, 188, 0);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes translateUp {
+  0% {
+    transform: translateY(0px);
+  }
+  100% {
+    transform: translateY(-200px);
+  }
+}
+
+@-webkit-keyframes translateUp {
+  0% {
+    transform: translateY(0px);
+  }
+  100% {
+    transform: translateY(-200px);
+  }
+}
+
+@keyframes translateDown {
+  0% {
+    transform: translateY(-200px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@-webkit-keyframes translateDown {
+  0% {
+    transform: translateY(-200px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* Styling for the win modal */
+#win-popup {
+  background-color: rgb(223, 0, 0);
+  animation: colorFlash 0.4s infinite;
+  -webkit-animation: colorFlash 0.4s infinite;
+  border: 5px solid rgb(29, 29, 29);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  display: none;
+}
+
+#win-popup > div {
+  font-family: "Press Start 2P", cursive;
+  font-size: 1.7em;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+#win-popup > div span {
+  font-family: "Press Start 2P", cursive;
+  font-size: 0.8em;
+}
+
+.close {
+  float: right;
+  cursor: pointer;
+}
+
 
 /* Styling for the score display */
 #scoreText {
@@ -69,9 +211,9 @@ h1 {
 /* Styling for the "Restart" and "Home" buttons */
 .btn-container {
   display: flex;
-  flex-direction: column; /* Stack them by default */
-  gap: 10px; /* Adjust the space between the buttons */
-  align-items: center; /* Center align the buttons for aesthetics */
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
 }
 
 .btn {
@@ -250,6 +392,7 @@ h1 {
 
 .sound-btn:hover,
 .sound-btn:active {
+  cursor: pointer;
   background-color: #3a3939f8;
   box-shadow: 0px 0px 0 rgb(41, 41, 41);
   -webkit-box-shadow: 0px 0px 0 rgb(41, 41, 41);
