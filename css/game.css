@@ -158,34 +158,36 @@ h1 {
   animation: colorFlash 0.4s infinite;
   -webkit-animation: colorFlash 0.4s infinite;
   border: 5px solid rgb(29, 29, 29);
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 10;
+  width: 80vw;
+  max-width: 300px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2vw;
+  box-sizing: border-box;
   display: none;
 }
 
 #win-popup > div {
-  font-family: "Press Start 2P", cursive;
-  font-size: 1.7em;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-}
-
-#win-popup > div span {
-  font-family: "Press Start 2P", cursive;
-  font-size: 0.8em;
+  font-family: 'Press Start 2P', cursive;
+  text-align: center;
 }
 
 .close {
-  float: right;
+  position: absolute;
+  top: 1vw;
+  right: 1vw;
+  font-size: 1.5vw; 
   cursor: pointer;
+  color: #fff; 
 }
-
 
 /* Styling for the score display */
 #scoreText {
@@ -397,4 +399,27 @@ h1 {
   box-shadow: 0px 0px 0 rgb(41, 41, 41);
   -webkit-box-shadow: 0px 0px 0 rgb(41, 41, 41);
   -moz-box-shadow: 0px 0px 0 rgb(41, 41, 41);
+}
+
+@media (max-width: 600px) {
+  #win-popup {
+    width: 50vw;
+    padding: 5px; 
+  }
+
+  .close-button {
+    font-size: 0.5em; 
+  }
+}
+
+@media (max-width: 768px) {
+  #win-popup {
+    width: 90vw;
+  }
+}
+
+@media (max-width: 400px) {
+  #win-popup {
+    width: 95vw;
+  }
 }
