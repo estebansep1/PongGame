@@ -235,6 +235,7 @@ body {
   background-color: #00ff00;
   color: #000;
   border: none;
+  border-radius: 10px;
   font-family: "Press Start 2P", cursive;
   cursor: pointer;
   box-shadow: 0 4px #009900;
@@ -243,6 +244,9 @@ body {
 
 #creditsBtn:hover {
   background-color: #00e600;
+}
+#creditsBtn:active {
+  background-color: #00e600cc;
 }
 
 /* Responsive screen styling */
