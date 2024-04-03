@@ -18,7 +18,7 @@ body {
   text-shadow: 0px 0px 10px #39ff14;
   overflow: hidden;
   gap: 10px 10px 15px;
-  overflow-y: auto; 
+  overflow-y: auto;
 }
 
 /* Style for the header section */
@@ -153,6 +153,98 @@ body {
   opacity: 0.7;
 }
 
+/* Credits modal styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.8);
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  background-color: #000;
+  margin: 10% auto;
+  padding: 20px;
+  border: 1px solid #00ff00;
+  width: 90%;
+  max-width: 600px;
+  text-align: center;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.modal-content h1 {
+  font-size: 1.5em;
+  margin-bottom: 0.5em;
+  line-height: 1.2;
+}
+
+.modal-content p,
+.modal-content li {
+  font-size: 0.8em;
+  margin-bottom: 1em;
+  line-height: 1.5;
+}
+
+.modal-content a {
+  font-size: 0.8em;
+  color: #99ff99;
+  text-decoration: none;
+}
+
+.modal-content a:hover {
+  text-decoration: underline;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  background: none;
+  border: none;
+}
+
+.close:hover,
+.close:focus {
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-content p,
+.modal-content h1,
+.modal-content h2,
+.modal-content li {
+  color: #fff;
+  font-family: "Press Start 2P", cursive;
+  text-shadow: 0px 0px 5px #00ff00;
+}
+
+/* Styles for your credits button */
+#creditsBtn {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  background-color: #00ff00;
+  color: #000;
+  border: none;
+  font-family: "Press Start 2P", cursive;
+  cursor: pointer;
+  box-shadow: 0 4px #009900;
+  text-transform: uppercase;
+}
+
+#creditsBtn:hover {
+  background-color: #00e600;
+}
+
 /* Responsive screen styling */
 @media (max-width: 768px) {
   .indexTitle {
@@ -165,7 +257,7 @@ body {
   }
 
   #instructions {
-    padding: 0.7rem 1rem
+    padding: 0.7rem 1rem;
   }
 }
 
@@ -277,34 +369,36 @@ body {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: 15px; 
+  gap: 15px;
   margin-top: 20px;
 }
 
-
 /* Handling landscape orientation on mobile devices */
 @media only screen and (max-height: 480px) and (orientation: landscape) {
-  html, body {
+  html,
+  body {
     padding-top: 5vw;
     padding-bottom: 5vw;
     display: flex;
     flex-direction: column;
-    justify-content: center; 
-    height: auto; 
-    overflow-y: visible; 
+    justify-content: center;
+    height: auto;
+    overflow-y: visible;
   }
 
-  .indexTitle, #instructions h2 {
-    font-size: 1rem; 
-    margin-top: 0; 
+  .indexTitle,
+  #instructions h2 {
+    font-size: 1rem;
+    margin-top: 0;
     margin-bottom: 1vh;
   }
 
   .indexTitle {
-    margin-bottom: 45px
+    margin-bottom: 45px;
   }
 
-  #instructions p, #instructions li {
+  #instructions p,
+  #instructions li {
     font-size: 0.5rem;
     line-height: 1.2;
   }
@@ -312,5 +406,32 @@ body {
   .button-container {
     flex-direction: row;
     gap: 2vh;
+  }
+}
+
+@media (max-width: 600px) {
+  .modal-content {
+    margin: 5% auto;
+    width: 90%;
+  }
+
+  .modal-content h1 {
+    font-size: 1em;
+  }
+
+  .modal-content p,
+  .modal-content li {
+    font-size: 0.7em;
+  }
+}
+
+@media (max-width: 400px) {
+  .modal-content h1 {
+    font-size: 0.9em;
+  }
+
+  .modal-content p,
+  .modal-content li {
+    font-size: 0.6em;
   }
 }
