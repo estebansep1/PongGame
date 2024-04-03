@@ -273,7 +273,7 @@ function declareGameWinner() {
     sound.play();
     document.getElementById("win-popup").style.display = "block";
     if (shouldPlayConfetti) {
-      confetti.start(1500);
+      confetti.start(5000);
     }
     gameIsRunning = false;
   }
